@@ -1,14 +1,15 @@
 import './App.css';
+import BodySection from './Components/BodySection/BodySection';
+import BodySection1 from './Components/BodySection/BodySection1';
 import Navbar from './Components/Navbar/Navbar';
-import Body1 from './Components/Body/Body1.jsx';
-import Body2 from './Components/Body/Body2.jsx';
+
 
 function App() {
   return (
     <div className="App">
         <Navbar/>
-        <Body1/>
-        <Body2/>
+        <BodySection/>
+        <BodySection1/>
     </div>
   );
 }

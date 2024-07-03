@@ -1,0 +1,47 @@
+
+.container{
+    background-color: rgb(34 71 56);
+    color: white;
+}
+.alpha{
+    display: flex;
+    padding-top:20px;
+    margin-left:100px;
+}
+.alpha:hover{
+    cursor:pointer;
+}
+.flex {
+    display: flex;
+    flex-direction: column;
+    
+}
+.positioning{
+    margin-top:45px;
+    margin-left:-200px;
+}
+.below{
+    margin-top:30px;
+    margin-left:0px;
+    margin-bottom: 60px;
+}
+
+/* Media Query for Mobile Phones */
+@media (max-width: 768px) {
+    .positioning {
+        margin-top: 20px;
+        margin-left: 0px;
+        text-align: center;
+    }
+    
+    .below {
+        margin-top: 15px;
+        margin-left: 0px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .flex {
+        align-items: center;
+    }
+}

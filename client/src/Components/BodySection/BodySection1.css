@@ -1,0 +1,79 @@
+.small{
+    display: flex;
+    padding:10px;
+    justify-content: center;
+    flex-direction:column;
+    margin:20px 300px;
+    width: 60%;
+    border: solid 3px rgb(143, 145, 146);
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 2px rgb(143, 145, 146);
+}
+.Box{
+    /* box-shadow: 4px 3px 2px 1px rgba(0,0,0,0.1); */
+    padding: 50px;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px; /* 5px rounded corners */
+    width: 140px;
+    height:170px;
+    padding:6px;
+    margin:20px;
+    transition: transform 0.3s;
+}
+
+  /* Add rounded corners to the top left and the top right corner of the image */
+img {
+    
+    border-radius: 5px 5px 0 0;
+}
+  /* On mouse-over, add a deeper shadow */
+  .card:hover {
+
+    transform: translateY(-10px);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Add some padding inside the card container */
+  .container1 {
+    margin:10px;
+    padding: 2px;
+  }
+  @media (max-width: 768px) {
+    .small {
+        margin: 100px;
+        width: 60%;
+         /* Remove box-shadow for a cleaner look on mobile */
+        padding: 20px;
+    }
+
+    .Box {
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        justify-content: center;
+    }
+
+    .card {
+        width: 150px;
+        height: 160px;
+        margin-left: 20px;
+    }
+
+    img {
+        /* width: 100px; */
+         /* Adjust image size */
+        /* height: 75px; */
+         /* Adjust image size */
+    }
+
+    .container1 {
+        margin: 5px;
+        padding: 1px;
+    }
+}
