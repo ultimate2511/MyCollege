@@ -1,34 +1,44 @@
-
-.container{
+.container {
     background-color: rgb(34 71 56);
     color: white;
     height: 200px;
+    position: relative;
 }
 
 .alpha {
     display: flex;
-    padding-top:20px;
-    margin-left:100px;
+    padding-top: 20px;
+    margin-left: 100px;
 }
-.alpha span,img:hover{
-    cursor:pointer;
+
+.alpha span, img:hover {
+    cursor: pointer;
 }
-.info{
-    display: flex;
-    margin-left:75px;
+
+.info {
+    display: none;
+    position: absolute;
+    background-color: transparent; /* No background color */
+    color: white; /* Text color */
+    padding: 10px;
+    margin-left: 110px; /* Space between the "Our Criteria" and the info box */
+    border-radius: 5px;
+    z-index: 1;
 }
+
 .flex {
     display: flex;
     flex-direction: column;
-    
 }
-.positioning{
-    margin-top:45px;
-    margin-left:-200px;
+
+.positioning {
+    margin-top: 45px;
+    margin-left: -200px;
 }
-.below{
-    margin-top:30px;
-    margin-left:0px;
+
+.below {
+    margin-top: 30px;
+    margin-left: 0px;
     margin-bottom: 60px;
 }
 
@@ -39,7 +49,7 @@
         margin-left: 0px;
         text-align: center;
     }
-    
+
     .below {
         margin-top: 15px;
         margin-left: 0px;
@@ -49,5 +59,18 @@
 
     .flex {
         align-items: center;
+    }
+
+    .alpha {
+        justify-content: center;
+        margin-left: 0;
+    }
+
+    .info.mobile {
+        position: relative; /* Position relative to avoid overlap */
+        display: block; /* Always display */
+        margin-left: 0; /* Reset margin for mobile */
+        text-align: center;
+        color: white;
     }
 }
