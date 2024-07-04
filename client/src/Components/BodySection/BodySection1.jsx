@@ -9,7 +9,6 @@ import advanced from './advanced.jpg'
 import neet from './neet.gif'
 import cat from './cat.png'
 import clat from './clat.png'
-import Card from './Card.jsx';
 function BodySection1() {
 
    
@@ -24,6 +23,7 @@ function BodySection1() {
   return (
     <div>
     <div className="">
+      
     </div>
     <div className="small">
         <h3>Select Course</h3>
@@ -70,15 +70,8 @@ function BodySection1() {
         <h4><b>CAT</b></h4>
         </div>
       </div>
-      <Card image = {engineer} exam = {"JEE Main"}/>
-      <Card image = {engineer} exam = {"JEE Advance"}/>
-      <Card image = {medical} exam = {"Neet"}/>
-      <Card image = {mba} exam = {"CAT"}/>
-      <Card image = {engineer} exam = {"JEE Main"}/>
-      <Card image = {engineer} exam = {"JEE Main"}/>
-      <Card image = {engineer} exam = {"JEE Main"}/>
       </div>
-    </div>
+      </div>
     </div>
   )
 }
