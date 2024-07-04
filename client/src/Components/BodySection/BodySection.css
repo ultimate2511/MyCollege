@@ -2,14 +2,20 @@
 .container{
     background-color: rgb(34 71 56);
     color: white;
+    height: 200px;
 }
-.alpha{
+
+.alpha {
     display: flex;
     padding-top:20px;
     margin-left:100px;
 }
-.alpha:hover{
+.alpha span,img:hover{
     cursor:pointer;
+}
+.info{
+    display: flex;
+    margin-left:75px;
 }
 .flex {
     display: flex;

@@ -3,60 +3,23 @@ import './BodySection1.css';
 import engineer from './engineer.jpg';
 import medical from './medical.jpg';
 import mba from './mba.jpg';
+import Card from './Card.jsx';
 function BodySection1() {
-    
   return (
     <div>
     <div className="">
-      
     </div>
     <div className="small">
         <h3>Select Course</h3>
       <div className="Box">
-      <div class="card">
-      <img src = {engineer} style={{ width: "125px", height:"100px" }}/>
-        <div class="container1">
-        <h4><b>JEE Main</b></h4>
-        </div>
+      <Card image = {engineer} exam = {"JEE Main"}/>
+      <Card image = {engineer} exam = {"JEE Advance"}/>
+      <Card image = {medical} exam = {"Neet"}/>
+      <Card image = {mba} exam = {"CAT"}/>
+      <Card image = {engineer} exam = {"JEE Main"}/>
+      <Card image = {engineer} exam = {"JEE Main"}/>
+      <Card image = {engineer} exam = {"JEE Main"}/>
       </div>
-      <div class="card">
-      <img src = {engineer} style={{ width: "125px", height:"100px" }}/>
-        <div class="container1">
-        <h4><b>JEE Advanced</b></h4>
-        </div>
-      </div>
-      <div class="card">
-      <img src = {medical} style={{ width: "125px", height:"100px" }}/>
-        <div class="container1">
-        <h4><b>Neet</b></h4>
-        </div>
-      </div>
-      <div class="card">
-      <img src = {mba} style={{ width: "125px", height:"100px" }}/>
-        <div class="container1">
-        <h4><b>CAT</b></h4>
-        </div>
-      </div>
-      <div class="card">
-      <img src = {mba} style={{ width: "125px", height:"100px" }}/>
-        <div class="container1">
-        <h4><b>CAT</b></h4>
-        </div>
-      </div>
-      <div class="card">
-      <img src = {mba} style={{ width: "125px", height:"100px" }}/>
-        <div class="container1">
-        <h4><b>CAT</b></h4>
-        </div>
-      </div>
-      <div class="card">
-      <img src = {mba} style={{ width: "125px", height:"100px" }}/>
-        <div class="container1">
-        <h4><b>CAT</b></h4>
-        </div>
-      </div>
-      </div>
-
     </div>
     </div>
   )
