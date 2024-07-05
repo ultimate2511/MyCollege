@@ -2,7 +2,7 @@ import './App.css';
 import BodySection from './Components/BodySection/BodySection';
 import BodySection1 from './Components/BodySection/BodySection1';
 import Navbar from './Components/Navbar/Navbar';
-
+import Jossa from './Components/Jossa/Jossa.jsx';
 import Footer from './Components/Footer/Footer.jsx';
 import JEEMainForm from './Components/JeeMainsForm/JeeMainsForm.jsx';
 import ListPage from './Components/ListPage/ListPage.jsx';
@@ -72,7 +72,11 @@ function App() {
         <Routes>
           <Route path="/" element={<BodySection1 />} />
           <Route path="/jeemains" element={<JEEMainForm />} />
+<<<<<<< HEAD
           <Route path="/jeemains/listpage" element={<ListPage colleges={colleges}/>} />
+=======
+          <Route path="/jeemains/jossa" element={<Jossa/>}/>
+>>>>>>> 7d79473a24dc17da0aea584c24b6ed1299d95a6d
         </Routes>
         <Footer />
       </div>
