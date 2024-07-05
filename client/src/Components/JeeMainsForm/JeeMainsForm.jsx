@@ -97,7 +97,7 @@ const JEEMainForm = () => {
               statesAndUnionTerritories.map((item)=>{
                     
                 <option value="hi">hi</option>
-               
+            
               })
           }
           
