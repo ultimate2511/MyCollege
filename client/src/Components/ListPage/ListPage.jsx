@@ -1,7 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './ListPage.css';
+import FormContext from '../../Context/FormContext';
 
 const ListPage = ({ colleges }) => {
+
+
+  const {mainsForm,setMainsForm} = useContext(FormContext);
+
+   // console.log(mainsForm);
   const [sortType, setSortType] = useState('');
   const [sortBranch, setSortBranch] = useState('');
   const [hoveredBranch, setHoveredBranch] = useState(null);

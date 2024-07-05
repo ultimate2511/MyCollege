@@ -1,22 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 import './JeeMainsForm.css';
 import { useNavigate } from 'react-router-dom';
+import FormContext from '../../Context/FormContext';
 
 const JEEMainForm = () => {
+
+  
   const [formData, setFormData] = useState({
     counselling: 'Joint Seat Allocation Authority (JoSAA Counselling)',
-    course:'  B.E./B.Tech',
-    casteGroup: '',
     rank: '',
     homeState: '',
+    casteGroup: '',
     gender: '',
-    speciallyAbled: ''
+    speciallyAbled: '',
+    mobileNumber: ''
   });
+
+  const {mainsForm,setMainsForm} = useContext(FormContext);
+
 
   const statesAndUnionTerritories = ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal", "Andaman and Nicobar Islands", "Chandigarh", "Dadra and Nagar Haveli and Daman and Diu", "Delhi", "Lakshadweep", "Puducherry", "Ladakh", "Jammu and Kashmir"];
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
+    if (name === "rank" && !/^\d*$/.test(value)) {
+      // If the input is for rank and it is not a number, don't update state
+      return;
+    }
+
     setFormData({
       ...formData,
       [name]: value
@@ -31,8 +43,9 @@ const JEEMainForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setMainsForm(formData);
     navigate(`/jeemains/listpage`);
-    console.log(formData);
+
   };
 
   return (
@@ -64,7 +77,7 @@ const JEEMainForm = () => {
       </div>
       <div>
         <label>Caste Group</label>
-        <select name="casteGroup" value={formData.casteGroup} onChange={handleChange} required>
+        <select name="casteGroup" value={formData.casteGroup} onChange={handleChange}>
           <option value="">-- Select --</option>
           <option value="General">General</option>
           <option value="Ews">Ews</option>
@@ -81,12 +94,11 @@ const JEEMainForm = () => {
           name="rank"
           value={formData.rank}
           onChange={handleChange}
-          required
         />
       </div>
       <div>
         <label>Select your Home State</label>
-        <select name="homeState" value={formData.homeState} onChange={handleChange} required>
+        <select name="homeState" value={formData.homeState} onChange={handleChange}>
           <option value="">-- Select --</option>
           {
             statesAndUnionTerritories.map((item, index) => (
@@ -98,7 +110,7 @@ const JEEMainForm = () => {
 
       <div>
         <label>Gender</label>
-        <select name="gender" value={formData.gender} onChange={handleChange} required>
+        <select name="gender" value={formData.gender} onChange={handleChange}>
           <option value="">-- Select --</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
@@ -106,7 +118,7 @@ const JEEMainForm = () => {
       </div>
       <div>
         <label>Are You Physically Challenged?</label>
-        <select name="speciallyAbled" value={formData.speciallyAbled} onChange={handleChange} required>
+        <select name="speciallyAbled" value={formData.speciallyAbled} onChange={handleChange}>
           <option value="">-- Select --</option>
           <option value="Yes">Yes</option>
           <option value="No">No</option>

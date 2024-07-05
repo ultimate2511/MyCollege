@@ -72,11 +72,8 @@ function App() {
         <Routes>
           <Route path="/" element={<BodySection1 />} />
           <Route path="/jeemains" element={<JEEMainForm />} />
-<<<<<<< HEAD
           <Route path="/jeemains/listpage" element={<ListPage colleges={colleges}/>} />
-=======
           <Route path="/jeemains/jossa" element={<Jossa/>}/>
->>>>>>> 7d79473a24dc17da0aea584c24b6ed1299d95a6d
         </Routes>
         <Footer />
       </div>

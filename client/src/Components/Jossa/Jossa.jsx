@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
+import FormContext from '../../Context/FormContext';
+
 import './Jossa.css';
 
 const initialData = [
@@ -15,7 +17,9 @@ const Jossa = () => {
     branch: 'all',
     gender: 'all',
   });
-  
+  const {mainsForm,setMainsForm} = useContext(FormContext);
+
+
   const handleFilterChange = (event) => {
     const { name, value } = event.target;
     setFilters((prevFilters) => ({
