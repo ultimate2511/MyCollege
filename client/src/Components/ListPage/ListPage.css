@@ -1,0 +1,166 @@
+.college-list-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  .filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .filters select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    width: 30%;
+  }
+  
+  .apply-filter-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1em;
+    margin-bottom: 10px;
+    width: 30%;
+  }
+  
+  .apply-filter-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .college-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .college-item {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: calc(33% - 20px);
+    box-sizing: border-box;
+    transition: transform 0.3s;
+  }
+  
+  .college-item:hover {
+    transform: scale(1.05);
+  }
+  
+  .college-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .college-details {
+    text-align: center;
+  }
+  .college-details p .spp{
+      
+      font-size: 1.1em;
+      font-weight: 600;
+  }
+
+  .sp{
+      
+     font-size: 1.1em;
+     font-weight: 400;
+  }
+  
+  .college-item h3 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #333;
+  }
+  
+  .college-item p {
+    margin: 5px 0;
+    color: #666;
+  }
+  
+  .branch-hover {
+    cursor: pointer;
+    color: #007BFF;
+  }
+  
+  .branch-hover:hover {
+    text-decoration: underline;
+  }
+  
+  .branch-details {
+    position: absolute;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    z-index: 1000;
+  }
+  
+  .branch-details h4 {
+    margin-top: 0;
+    font-size: 1em;
+    color: #333;
+  }
+  
+  .branch-details ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .branch-details li {
+    margin: 5px 0;
+    color:blue;
+  }
+  
+  /* Media Queries for responsive design */
+  
+  @media (max-width: 768px) {
+    .filters {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .filters select, .apply-filter-button {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  
+    .college-item {
+      width: calc(50% - 20px);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .college-item {
+      width: 100%;
+    }
+  
+    .college-image {
+      height: 150px;
+    }
+  
+    .branch-details {
+      display: none;
+    }
+  }
+  
