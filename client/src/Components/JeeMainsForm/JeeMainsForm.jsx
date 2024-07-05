@@ -94,11 +94,14 @@ const JEEMainForm = () => {
           name="rank"
           value={formData.rank}
           onChange={handleChange}
+          required
         />
       </div>
       <div>
         <label>Select your Home State</label>
-        <select name="homeState" value={formData.homeState} onChange={handleChange}>
+        <select name="homeState" value={formData.homeState} onChange={handleChange}
+        required
+        >
           <option value="">-- Select --</option>
           {
             statesAndUnionTerritories.map((item, index) => (
@@ -110,7 +113,9 @@ const JEEMainForm = () => {
 
       <div>
         <label>Gender</label>
-        <select name="gender" value={formData.gender} onChange={handleChange}>
+        <select name="gender" value={formData.gender} onChange={handleChange}
+        required
+        >
           <option value="">-- Select --</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
@@ -118,7 +123,9 @@ const JEEMainForm = () => {
       </div>
       <div>
         <label>Are You Physically Challenged?</label>
-        <select name="speciallyAbled" value={formData.speciallyAbled} onChange={handleChange}>
+        <select name="speciallyAbled" value={formData.speciallyAbled} onChange={handleChange}
+        required
+        >
           <option value="">-- Select --</option>
           <option value="Yes">Yes</option>
           <option value="No">No</option>

@@ -1,17 +1,17 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import './ListPage.css';
 import FormContext from '../../Context/FormContext';
+import { useNavigate } from 'react-router-dom';
 
 const ListPage = ({ colleges }) => {
-
-
-  const {mainsForm,setMainsForm} = useContext(FormContext);
-
-   // console.log(mainsForm);
+  const { mainsForm, setMainsForm } = useContext(FormContext);
+  const [collegeName, setCollegeName] = useState('');
   const [sortType, setSortType] = useState('');
   const [sortBranch, setSortBranch] = useState('');
   const [hoveredBranch, setHoveredBranch] = useState(null);
   const [hoveredElement, setHoveredElement] = useState(null);
+
+  const navigate = useNavigate();
 
   const handleSortTypeChange = (e) => {
     setSortType(e.target.value);
@@ -31,11 +31,26 @@ const ListPage = ({ colleges }) => {
     setHoveredElement(null);
   };
 
-  const filteredColleges = colleges
-    .filter(college => 
+  const handleClick = (name) => {
+    setCollegeName(name);
+  };
+
+  useEffect(() => {
+    if (collegeName) {
+      const newFormData = {
+        ...mainsForm,
+        collegeName: collegeName,
+      };
+      setMainsForm(newFormData);
+      navigate(`/jeemains/jossa`);
+    }
+  }, [collegeName, mainsForm, navigate, setMainsForm]);
+
+  const filteredColleges = colleges.filter(
+    (college) =>
       (sortType ? college.type === sortType : true) &&
       (sortBranch ? college.branch.includes(sortBranch) : true)
-    );
+  );
 
   return (
     <div className="college-list-container">
@@ -60,26 +75,46 @@ const ListPage = ({ colleges }) => {
       <ul className="college-list">
         {filteredColleges.map((college, index) => (
           <li key={index} className="college-item">
-            <img src={"https://lh3.googleusercontent.com/p/AF1QipNxkZdJK9pjFJgxuGYlPlqRfKzIhnSvTZ6azvV5=s1360-w1360-h1020"} alt={`${college.name} image`} className="college-image"/>
-            <div className="college-details">
+            <img
+              src={"https://lh3.googleusercontent.com/p/AF1QipNxkZdJK9pjFJgxuGYlPlqRfKzIhnSvTZ6azvV5=s1360-w1360-h1020"}
+              alt={`${college.name} image`}
+              className="college-image"
+              onClick={() => handleClick(college.name)}
+            />
+            <div
+              className="college-details"
+              onClick={() => handleClick(college.name)}
+            >
               <h4>{college.name}</h4>
-              <p><span className='spp'>Type:</span> <span className='sp'>{college.type}</span></p>
-              <p 
-                className="branch-hover" 
+              <p>
+                <span className="spp">Type:</span> <span className="sp">{college.type}</span>
+              </p>
+              <p
+                className="branch-hover"
                 onMouseEnter={(e) => handleBranchHover(college.branch, e.target)}
                 onMouseLeave={handleBranchLeave}
               >
-               <span className='spp'> Checkout your Branch:</span>
+                <span className="spp"> Checkout your Branch:</span>
               </p>
-              <p><span className='spp'>Location:</span>  <span className='sp'>{college.location}</span></p>
-              <p><span className='spp'>Probability:</span> <span className='sp'>100% </span></p>
+              <p>
+                <span className="spp">Location:</span> <span className="sp">{college.location}</span>
+              </p>
+              <p>
+                <span className="spp">Probability:</span> <span className="sp">100% </span>
+              </p>
             </div>
           </li>
         ))}
       </ul>
 
       {hoveredBranch && hoveredElement && (
-        <div className="branch-details" style={{ top: hoveredElement.getBoundingClientRect().top + window.scrollY, left: hoveredElement.getBoundingClientRect().right + 10 }}>
+        <div
+          className="branch-details"
+          style={{
+            top: hoveredElement.getBoundingClientRect().top + window.scrollY,
+            left: hoveredElement.getBoundingClientRect().right + 10,
+          }}
+        >
           <h4>Branches Available:</h4>
           <ul>
             {hoveredBranch.map((branch, index) => (
