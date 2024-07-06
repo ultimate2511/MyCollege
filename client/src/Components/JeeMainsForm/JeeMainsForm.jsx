@@ -77,7 +77,9 @@ const JEEMainForm = () => {
       </div>
       <div>
         <label>Caste Group</label>
-        <select name="casteGroup" value={formData.casteGroup} onChange={handleChange}>
+        <select name="casteGroup" value={formData.casteGroup} onChange={handleChange}
+        required
+        >
           <option value="">-- Select --</option>
           <option value="General">General</option>
           <option value="Ews">Ews</option>
