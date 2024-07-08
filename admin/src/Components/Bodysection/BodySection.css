@@ -1,48 +1,36 @@
 .container {
-    background-color: rgb(34 71 56);
+    background-color: rgb(34, 71, 56);
     color: white;
     height: 200px;
     position: relative;
-}
-
-.option {
     display: flex;
+    justify-content: center;
     align-items: center;
-    padding: 10px 20px;
-    margin: 10px 0;
-    border: solid 2px rgb(143, 145, 146);
-    border-radius: 5px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    gap: 20px; /* Add gap between buttons */
+}
+
+.square-button {
+    width: 120px; /* Increased width to accommodate icon and text */
+    height: 100px;
+    background-color: white;
+    color: rgb(34, 71, 56);
+    border: none;
+    display: flex;
+    flex-direction: column; /* Arrange icon and text vertically */
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-
-.icon {
-    margin-right: 10px;
-    font-size: 24px;
-}
-
-.text {
-    font-size: 18px;
+    font-size: 14px;
     font-weight: bold;
+    border-radius: 8px; /* Optional: for rounded corners */
+    transition: background-color 0.3s;
 }
 
-@media (max-width: 768px) {
-    .container {
-        margin: 10px 50px;
-        padding: 10px;
-    }
+.square-button:hover {
+    background-color: rgb(220, 220, 220);
+}
 
-    .option {
-        padding: 8px 16px;
-    }
-
-    .icon {
-        font-size: 20px;
-    }
-
-    .text {
-        font-size: 16px;
-    }
+.square-button i {
+    font-size: 24px; /* Size of the icon */
+    margin-bottom: 8px; /* Space between icon and text */
 }

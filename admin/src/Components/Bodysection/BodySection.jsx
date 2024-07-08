@@ -1,17 +1,35 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import './BodySection.css';
 
 function BodySection() {
+    const [navigateTo, setNavigateTo] = useState(null);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (navigateTo) {
+            navigate(navigateTo);
+        }
+    }, [navigateTo, navigate]);
+
+    const handleAddCollegeClick = () => {
+        setNavigateTo('/add-college');
+    };
+
+    const handleShowCollegesClick = () => {
+        setNavigateTo('/show-colleges');
+    };
+
     return (
         <div className="container">
-            <div className="option" onClick={() => console.log('Add College Clicked')}>
-                <span className="icon">➕</span>
-                <span className="text">Add College</span>
-            </div>
-            <div className="option" onClick={() => console.log('Show College Clicked')}>
-                <span className="icon">📚</span>
-                <span className="text">Show College</span>
-            </div>
+            <button className="square-button" onClick={handleAddCollegeClick}>
+                <i className="fas fa-plus"></i>
+                <span>Add College</span>
+            </button>
+            <button className="square-button" onClick={handleShowCollegesClick}>
+                <i className="fas fa-university"></i>
+                <span>Show Colleges</span>
+            </button>
         </div>
     );
 }
