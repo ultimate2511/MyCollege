@@ -94,7 +94,9 @@
     visibility: visible;
     opacity: 1;
   }
-
+span{
+  z-index: 10;
+}
   .profile-name {
     position: absolute;
     top: 40px;  // Adjust to show the name below the icon
