@@ -14,7 +14,7 @@ function App() {
       <Navbar />
       <BodySection/>
       <Routes>
-        <Route path="/add-college" element={<AddCollege/>} />
+        <Route path='/' element={<AddCollege/>}/>
         <Route path="/show-colleges" element={<Jossa />} />
       </Routes>
       <Footer />

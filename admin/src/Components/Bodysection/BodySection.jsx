@@ -13,7 +13,7 @@ function BodySection() {
     }, [navigateTo, navigate]);
 
     const handleAddCollegeClick = () => {
-        setNavigateTo('/add-college');
+        setNavigateTo('/');
     };
 
     const handleShowCollegesClick = () => {
