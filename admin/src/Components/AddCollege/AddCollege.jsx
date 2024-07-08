@@ -2,15 +2,8 @@ import React, { useState } from 'react';
 import './AddCollege.css';
 
 const AddCollege = () => {
-  // Define arrays for NIT names and branch names
-  const nitOptions = [
-    'NIT Warangal',
-    'NIT Trichy',
-    'NIT Surathkal',
-    'NIT Calicut',
-    'NIT Rourkela',
-    // Add more NITs as needed
-  ];
+  // Define arrays for college names and branch names
+  const collegeTypeOptions = ['NIT', 'IIIT', 'GFTI'];
 
   const branchOptions = [
     'Computer Science and Engineering',
@@ -100,31 +93,38 @@ const AddCollege = () => {
   return (
     <div className="form-container">
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="college_name">College Name:</label>
-          <select
-            id="college_name"
-            name="college_name"
-            value={formData.college_name}
-            onChange={handleChange}
-          >
-            <option value="">Select NIT</option>
-            {nitOptions.map((nit, index) => (
-              <option key={index} value={nit}>
-                {nit}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="form-group">
-          <label htmlFor="college_type">College Type:</label>
-          <input
-            type="text"
-            id="college_type"
-            name="college_type"
-            value={formData.college_type}
-            readOnly
-          />
+        <div className="form-row">
+          <div className="form-group">
+            <label htmlFor="college_name">College Name:</label>
+            <select
+              id="college_name"
+              name="college_name"
+              value={formData.college_name}
+              onChange={handleChange}
+            >
+              <option value="">Select College</option>
+              {collegeTypeOptions.map((college, index) => (
+                <option key={index} value={college}>
+                  {college}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="form-group">
+            <label htmlFor="college_type">College Type:</label>
+            <select
+              id="college_type"
+              name="college_type"
+              value={formData.college_type}
+              onChange={handleChange}
+            >
+              {collegeTypeOptions.map((type, index) => (
+                <option key={index} value={type}>
+                  {type}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
         <div className="form-group">
           <label htmlFor="image_url">Image URL:</label>
@@ -136,87 +136,93 @@ const AddCollege = () => {
             onChange={handleChange}
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="branch_name">Branch Name:</label>
-          <select
-            id="branch_name"
-            name="branch_name"
-            value={formData.branch_name}
-            onChange={handleChange}
-          >
-            <option value="">Select Branch</option>
-            {branchOptions.map((branch, index) => (
-              <option key={index} value={branch}>
-                {branch}
-              </option>
-            ))}
-          </select>
+        <div className="form-row">
+          <div className="form-group full-width" style={{width:'100%'}}>
+            <label htmlFor="branch_name">Branch Name:</label>
+            <select
+              id="branch_name"
+              name="branch_name"
+              value={formData.branch_name}
+              onChange={handleChange}
+            >
+              <option value="">Select Branch</option>
+              {branchOptions.map((branch, index) => (
+                <option key={index} value={branch}>
+                  {branch}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+        <div className="form-row">
+          <div className="form-group">
+            <label htmlFor="gender_name">Gender:</label>
+            <select
+              id="gender_name"
+              name="gender_name"
+              value={formData.gender_name}
+              onChange={handleChange}
+            >
+              <option value="">Select Gender</option>
+              {genderOptions.map((gender, index) => (
+                <option key={index} value={gender}>
+                  {gender}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="form-group">
+            <label htmlFor="category_name">Category:</label>
+            <select
+              id="category_name"
+              name="category_name"
+              value={formData.category_name}
+              onChange={handleChange}
+            >
+              <option value="">Select Category</option>
+              {categoryOptions.map((category, index) => (
+                <option key={index} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+        <div className="form-row">
+          <div className="form-group">
+            <label htmlFor="location">Location:</label>
+            <select
+              id="location"
+              name="location"
+              value={formData.location}
+              onChange={handleChange}
+            >
+              <option value="">Select Location</option>
+              {allStatesAndUTs.map((state, index) => (
+                <option key={index} value={state}>
+                  {state}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="form-group">
+            <label htmlFor="state_name">State:</label>
+            <select
+              id="state_name"
+              name="state_name"
+              value={formData.state_name}
+              onChange={handleChange}
+            >
+              <option value="">Select State</option>
+              {stateOptions.map((state, index) => (
+                <option key={index} value={state}>
+                  {state}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
         
-        <div className="form-group">
-          <label htmlFor="location">Location:</label>
-          <select
-            id="location"
-            name="location"
-            value={formData.location}
-            onChange={handleChange}
-          >
-            <option value="">Select Location</option>
-            {allStatesAndUTs.map((state, index) => (
-              <option key={index} value={state}>
-                {state}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="form-group">
-          <label htmlFor="gender_name">Gender:</label>
-          <select
-            id="gender_name"
-            name="gender_name"
-            value={formData.gender_name}
-            onChange={handleChange}
-          >
-            <option value="">Select Gender</option>
-            {genderOptions.map((gender, index) => (
-              <option key={index} value={gender}>
-                {gender}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="form-group">
-          <label htmlFor="state_name">State:</label>
-          <select
-            id="state_name"
-            name="state_name"
-            value={formData.state_name}
-            onChange={handleChange}
-          >
-            <option value="">Select State</option>
-            {stateOptions.map((state, index) => (
-              <option key={index} value={state}>
-                {state}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="form-group">
-          <label htmlFor="category_name">Category:</label>
-          <select
-            id="category_name"
-            name="category_name"
-            value={formData.category_name}
-            onChange={handleChange}
-          >
-            <option value="">Select Category</option>
-            {categoryOptions.map((category, index) => (
-              <option key={index} value={category}>
-                {category}
-              </option>
-            ))}
-          </select>
-        </div>
         <div className="form-row">
           <div className="form-group">
             <label htmlFor="year1">Year 1:</label>

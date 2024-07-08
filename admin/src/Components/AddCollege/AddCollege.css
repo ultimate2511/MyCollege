@@ -34,6 +34,7 @@
   .form-row {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 15px; /* Add spacing between rows */
   }
   
   .form-row .form-group {
