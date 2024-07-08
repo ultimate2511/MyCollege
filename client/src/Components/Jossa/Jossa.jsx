@@ -1,23 +1,47 @@
-import React, { useState,useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import axios from 'axios';
 import FormContext from '../../Context/FormContext';
 import './Jossa.css';
 
-const initialData = [
-  { branch: 'Computer Science and Engineering', gender: 'Male', state: 'Home State', category: 'General', closingRank: [500, 450, 400] },
-  { branch: 'Electrical Engineering', gender: 'Female', state: 'Other State', category: 'EWS', closingRank: [600, 550, 500] },
-  { branch: 'Electronics and Communication Engineering', gender: 'Male', state: 'Home State', category: 'OBC', closingRank: [700, 650, 600] },
-  { branch: 'Mechanical Engineering', gender: 'Female', state: 'Other State', category: 'SC', closingRank: [800, 750, 700] },
-];
-
 const Jossa = () => {
+  const { mainsForm, setMainsForm } = useContext(FormContext);
   const [filters, setFilters] = useState({
     category: 'all',
     state: 'all',
     branch: 'all',
     gender: 'all',
+    collegeName: 'IIT Bombay', // Corrected: Use collegeName instead of college
   });
-  const {mainsForm,setMainsForm} = useContext(FormContext);
-  console.log(mainsForm);
+  const [filteredData, setFilteredData] = useState([]);
+
+  // Array of college names
+  const collegeOptions = [
+    'IIT Bombay',
+    'NIT Warangal',
+    'NIT Trichy',
+    'IIIT Hyderabad',
+    'IIIT Delhi',
+    'IIIT Bangalore',
+    'IIEST Shibpur',
+    'Punjab Engineering College',
+    'MNNIT Allahabad'
+    // Add more colleges as needed
+  ];
+
+  // Fetch filtered data whenever filters change
+  useEffect(() => {
+    const fetchFilteredData = async () => {
+      try {
+        const response = await axios.post('http://localhost:4000/filterdata', filters);
+        console.log('Filtered Data:', response.data);
+        setFilteredData(response.data); // Update state with filtered data
+      } catch (error) {
+        console.error('Error fetching filtered data:', error);
+      }
+    };
+
+    fetchFilteredData();
+  }, [filters]); // Run effect whenever filters change
 
   const handleFilterChange = (event) => {
     const { name, value } = event.target;
@@ -27,30 +51,26 @@ const Jossa = () => {
     }));
   };
 
-  const filterData = (data) => {
-    return data.filter((item) => {
-      const categoryMatch = filters.category === 'all' || filters.category === item.category;
-      const stateMatch = filters.state === 'all' || filters.state === item.state;
-      const branchMatch = filters.branch === 'all' || filters.branch === item.branch;
-      const genderMatch = filters.gender === 'all' || filters.gender === item.gender;
-      return categoryMatch && stateMatch && branchMatch && genderMatch;
-    });
-  };
-
-  const filteredData = filterData(initialData);
-
   return (
     <div className="app">
-      <Sidebar filters={filters} handleFilterChange={handleFilterChange} />
+      <Sidebar filters={filters} handleFilterChange={handleFilterChange} collegeOptions={collegeOptions} />
       <Table data={filteredData} />
     </div>
   );
 };
 
-const Sidebar = ({ filters, handleFilterChange }) => {
+const Sidebar = ({ filters, handleFilterChange, collegeOptions }) => {
   return (
     <div className="sidebar">
       <h3>Filters</h3>
+      <div className="filter-group">
+        <label htmlFor="collegeName">Select College:</label> {/* Corrected: Use collegeName */}
+        <select id="collegeName" name="collegeName" value={filters.collegeName} onChange={handleFilterChange}>
+          {collegeOptions.map((college, index) => (
+            <option key={index} value={college}>{college}</option>
+          ))}
+        </select>
+      </div>
       <div className="filter-group">
         <label htmlFor="category">Select Category:</label>
         <select id="category" name="category" value={filters.category} onChange={handleFilterChange}>
@@ -78,6 +98,8 @@ const Sidebar = ({ filters, handleFilterChange }) => {
           <option value="Electrical Engineering">Electrical Engineering</option>
           <option value="Electronics and Communication Engineering">Electronics and Communication Engineering</option>
           <option value="Mechanical Engineering">Mechanical Engineering</option>
+          <option value="Civil Engineering">Civil Engineering</option>
+          {/* Add more branches as needed */}
         </select>
       </div>
       <div className="filter-group">
@@ -94,6 +116,7 @@ const Sidebar = ({ filters, handleFilterChange }) => {
 
 const Table = ({ data }) => {
   const getYear = new Date().getFullYear();
+
   return (
     <div className="table">
       <table>
@@ -111,13 +134,13 @@ const Table = ({ data }) => {
         <tbody>
           {data.map((item, index) => (
             <tr key={index}>
-              <td>{item.branch}</td>
-              <td>{item.gender}</td>
-              <td>{item.state}</td>
-              <td>{item.category}</td>
-              <td>{item.closingRank[0]}</td>
-              <td>{item.closingRank[1]}</td>
-              <td>{item.closingRank[2]}</td>
+              <td>{item.branch_name}</td>
+              <td>{item.gender_name}</td>
+              <td>{item.state_name}</td>
+              <td>{item.category_name}</td>
+              <td>{item.year1_closing_rank}</td>
+              <td>{item.year2_closing_rank}</td>
+              <td>{item.year3_closing_rank}</td>
             </tr>
           ))}
         </tbody>
