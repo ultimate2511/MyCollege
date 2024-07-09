@@ -1,0 +1,140 @@
+[33mcommit d1cc5bc535a627e1ec9429c43f7fa9020f5f7b1d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Gourabh7 <gourabh9098@gmail.com>
+Date:   Sun Jul 7 00:57:09 2024 +0530
+
+    env
+
+[33mcommit daf288662e74ad93f8252808a04ae18d300e98b2[m
+Author: Gourabh7 <gourabh9098@gmail.com>
+Date:   Sun Jul 7 00:56:02 2024 +0530
+
+    env
+
+[33mcommit e926fad645f89b2abfd2a57cb15a2b5b15ffb11f[m[33m ([m[1;31morigin/backend[m[33m)[m
+Author: Gourabh7 <gourabh9098@gmail.com>
+Date:   Sun Jul 7 00:40:32 2024 +0530
+
+    connected to backend
+
+[33mcommit 041c445d89ec9d9b30913bceaac09b7ddcbc9133[m
+Author: Gourabh7 <gourabh9098@gmail.com>
+Date:   Sat Jul 6 00:31:03 2024 +0530
+
+    frontend completed
+
+[33mcommit 9e7d98c011710198d5d47d79b0a5d2301cbc6040[m
+Author: anish <anishraj.ar21@gmail.com>
+Date:   Fri Jul 5 23:04:48 2024 +0530
+
+    context api setup completed
+
+[33mcommit 5fb57c086a883ed2c1110c9fce1f6d71ae0dbcc8[m
+Merge: 1f75413 7d79473
+Author: anish <anishraj.ar21@gmail.com>
+Date:   Fri Jul 5 21:18:00 2024 +0530
+
+    Merge branch 'master' of https://github.com/ultimate2511/MyCollege
+
+[33mcommit 1f75413aa9f2c1a77210d8b3cac681627d4ec870[m
+Author: anish <anishraj.ar21@gmail.com>
+Date:   Fri Jul 5 21:15:32 2024 +0530
+
+    jeemainsform and list of colleges statically completed
+
+[33mcommit 7d79473a24dc17da0aea584c24b6ed1299d95a6d[m
+Author: Gourabh7 <gourabh9098@gmail.com>
+Date:   Fri Jul 5 15:04:23 2024 +0530
+
+    jossa section implemented
+
+[33mcommit 03cdea3d592f80fa23358ba16a9a14523090f3d1[m
+Author: anish <anishraj.ar21@gmail.com>
+Date:   Thu Jul 4 22:26:19 2024 +0530
+
+    responsive added
+
+[33mcommit 2100aba2124295b6f1467ee2033205bf24efbb63[m
+Author: anish <anishraj.ar21@gmail.com>
+Date:   Thu Jul 4 21:24:01 2024 +0530
+
+    all good
+
+[33mcommit 2611e22c20e87cb741a9d29df4a9c6a04a5f5848[m
+Merge: b0584ff d8f9619
+Author: anish <anishraj.ar21@gmail.com>
+Date:   Thu Jul 4 21:15:59 2024 +0530
+
+    Merge branch 'newbranch'
+
+[33mcommit d8f961962a3460470c856d627ca27586342d0910[m
+Author: anish <anishraj.ar21@gmail.com>
+Date:   Thu Jul 4 21:04:57 2024 +0530
+
+    mains form created and connected
+
+[33mcommit b0584ff1c307002b69d6a2bd15bf0dcd9255535a[m[33m ([m[1;31morigin/newbody[m[33m)[m
+Author: Gourabh7 <gourabh9098@gmail.com>
+Date:   Thu Jul 4 10:58:42 2024 +0530
+
+    bodysectionimplementedusingcard
+
+[33mcommit 2e5421156c526af81a7744f70620dc2f7ed8603b[m
+Merge: ccdeef8 081c57d
+Author: Gourabh7 <gourabh9098@gmail.com>
+Date:   Wed Jul 3 21:01:33 2024 +0530
+
+    everything loooks ggod
+
+[33mcommit ccdeef8ee4cc1f7bb6e46a0d4a0fa87f383ff5d3[m
+Author: Gourabh7 <gourabh9098@gmail.com>
+Date:   Wed Jul 3 20:41:17 2024 +0530
+
+    body part almost completed
+
+[33mcommit 081c57d1678bca16b085b9c0c1fd91c01eda5eb2[m
+Author: anish <anishraj.ar21@gmail.com>
+Date:   Wed Jul 3 17:21:28 2024 +0530
+
+    footer done and dusted
+
+[33mcommit 4a19b3b9f172dac3806c69a5311c3b88710e8726[m[33m ([m[1;31morigin/body[m[33m)[m
+Author: Gourabh7 <gourabh9098@gmail.com>
+Date:   Wed Jul 3 15:56:57 2024 +0530
+
+    body1 body2 work started
+
+[33mcommit 02eb03785783677123925cda81a33d5e2cbf2931[m
+Author: anish <anishraj.ar21@gmail.com>
+Date:   Wed Jul 3 15:10:09 2024 +0530
+
+    static navbar component completed
+
+[33mcommit 9520308067e11a531c04680e30cb0160a96202a5[m
+Author: anish <anishraj.ar21@gmail.com>
+Date:   Wed Jul 3 14:14:57 2024 +0530
+
+    navbar component 1st step completed
+
+[33mcommit 98040d4d968cc5ac0ebe749baf97f02b030563f2[m
+Author: anish <anishraj.ar21@gmail.com>
+Date:   Wed Jul 3 13:11:59 2024 +0530
+
+    navbar isuue with logo is solved
+
+[33mcommit 68a9ce3d056b466d1ebee54f3d2435e22373cfcb[m
+Author: anish <anishraj.ar21@gmail.com>
+Date:   Wed Jul 3 13:05:24 2024 +0530
+
+    navbar file created
+
+[33mcommit cca46e6028016450ca06b055a95dda54290ca38d[m
+Author: anish <anishraj.ar21@gmail.com>
+Date:   Tue Jul 2 00:09:49 2024 +0530
+
+    app.js is modified
+
+[33mcommit 91df945d3ca151171cb405decd5074aa4ba5b83f[m
+Author: anish <anishraj.ar21@gmail.com>
+Date:   Tue Jul 2 00:05:11 2024 +0530
+
+    react app created

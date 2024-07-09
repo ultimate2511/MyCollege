@@ -4,6 +4,7 @@ import ClosingRank from '../Models/Mains.js';
 export const postData = async (req, res) => {
     const {
         college_name,
+        college_image,
         college_type,
         branch_name,
         gender_name,
@@ -20,6 +21,7 @@ export const postData = async (req, res) => {
       try {
         const newClosingRank = new ClosingRank({
           college_name,
+          college_image,
           college_type,
           branch_name,
           gender_name,
@@ -69,10 +71,8 @@ export const postData = async (req, res) => {
         if (category !== 'all') {
           query.category_name = category;
         }
-    
         // Fetch filtered data from the database
         const filteredData = await ClosingRank.find(query);
-        
         // Send the filtered data as the response
         res.json(filteredData);
       } catch (error) {
@@ -80,3 +80,26 @@ export const postData = async (req, res) => {
         res.status(500).json({ error: error.message });
       }
   };
+  export const collegelistpage = async (req,res) => {
+    try {
+      const {
+    rank= '',
+    homeState= '',
+    casteGroup= '',
+    gender='',
+    branch = 'all',
+      } = req.body;
+      const query = {};
+      query.gender_name = gender;
+      query.location = homeState;
+      query.category_name = casteGroup;
+      if (branch !== 'all') {
+        query.branch_name = branch;
+      }
+      const filteredData = await ClosingRank.find(query);
+      res.json(filteredData);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Server error' });
+    }
+  }
