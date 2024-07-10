@@ -11,24 +11,35 @@ const ListPage = ({ colleges }) => {
   const [sortBranch, setSortBranch] = useState('');
   const [hoveredBranch, setHoveredBranch] = useState(null);
   const [hoveredElement, setHoveredElement] = useState(null);
-
   const [response, setResponse] = useState([]);
-
+  
     // Fetch filtered data whenever filters change
     useEffect(() => {
       const fetchFilteredData = async () => {
         try {
          // console.log(mainsForm)
           const recv = await axios.post('http://localhost:4000/predictColleges', mainsForm);
-         // console.log('predict Data:', recv.data);
-          setResponse(recv.data); // Update state with filtered data
+         console.log('predict Data:', recv.data);
+         const res = recv.data;
+        //  console.log(res[0]);
+        //  console.log(res[0].college_type);
+        const al =  res.filter((e)=>{
+            return  sortType? sortType===e.college_type : true;
+          })
+          const final = al.filter((e)=>{
+            const arr = e.college_branch;
+            return sortBranch ? arr.includes(sortBranch) :true;
+          })
+          
+          setResponse(final); 
+          // Update state with filtered data
         } catch (error) {
           console.error('Error in predicting colleges:', error);
         }
       };
   
       fetchFilteredData();
-    }, []); 
+    }, [sortType,sortBranch]); 
 
   const navigate = useNavigate();
 
@@ -65,30 +76,26 @@ const ListPage = ({ colleges }) => {
     }
   }, [collegeName, mainsForm, navigate, setMainsForm]);
 
-  const filteredColleges = colleges.filter(
-    (college) =>
-      (sortType ? college.type === sortType : true) &&
-      (sortBranch ? college.branch.includes(sortBranch) : true)
-  );
-
   return (
     <div className="college-list-container">
       <div className="filters">
         <select onChange={handleSortTypeChange} value={sortType}>
           <option value="">All Types</option>
-          <option value="Government">Government</option>
-          <option value="Private">Private</option>
+          <option value="NIT">NIT</option>
+          <option value="IIT">IIT</option>
         </select>
 
         <select onChange={handleSortBranchChange} value={sortBranch}>
           <option value="">All Branches</option>
-          <option value="Engineering">Engineering</option>
-          <option value="Medical">Medical</option>
-          <option value="Commerce">Commerce</option>
-          {/* Add more branches as needed */}
+          <option value="Computer Science Engineering">Computer Science Engineering</option>
+          <option value="Electronics and Communication Engineering">Electronics and Communication Engineering</option>
+          <option value="Electrical Engineering">Electrical Engineering</option>
+          <option value="Mechanical Engineering">Mechanical Engineering</option>
+          <option value="Civil Engineering">Civil Engineering</option>
+          
         </select>
 
-        <button className="apply-filter-button" onClick={() => {}}>Apply Filter</button>
+
       </div>
 
       <ul className="college-list">
