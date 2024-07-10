@@ -3,7 +3,8 @@ import './Navbar.scss';
 import logo from './logo.webp';  // Assuming you have a logo image in the src directory
 import searchicon from './search.png';
 import { FaUser, FaSignInAlt } from 'react-icons/fa';  // Importing icons for user profile and login
-
+import  SignIn  from '../signin/SignIn.jsx'
+import  SignUp  from '../signup/SignUp.jsx'
 const Navbar = ({ userName }) => {
   return (
     <nav className="navbar">
@@ -20,8 +21,8 @@ const Navbar = ({ userName }) => {
           <FaUser />Profile
           <span className="profile-name">Anish</span>
         </div>
-        <a href="/login" className="navbar-login">
-          <FaSignInAlt /> Login
+        <a href="/signin" className="navbar-login">
+          <FaSignInAlt /> SignIn
         </a>
       </div>
     </nav>
