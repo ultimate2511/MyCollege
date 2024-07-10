@@ -6,11 +6,10 @@ const AddCollege = () => {
   // Define arrays for college names and branch names
   const collegeTypeOptions = ['NIT', 'IIIT', 'GFTI'];
   const colleges = [
-    // List of NITs
     "NIT Agartala",
-    "NIT Andhra Pradesh",
     "NIT Arunachal Pradesh",
-    "NIT Bhopal",
+    "NIT Andhra Pradesh",
+    "MANIT Bhopal",
     "NIT Calicut",
     "NIT Delhi",
     "NIT Durgapur",
@@ -29,45 +28,17 @@ const AddCollege = () => {
     "NIT Sikkim",
     "NIT Silchar",
     "NIT Srinagar",
-    "NIT Surat",
-    "NIT Surathkal",
+    "SVNIT Surat",
     "NIT Tiruchirappalli",
     "NIT Uttarakhand",
     "NIT Warangal",
     "NIT Jalandhar",
-    "NIT Jaipur",
-  
-    // List of IIITs
-    "IIIT Allahabad",
-    "IIIT Bhagalpur",
-    "IIIT Bhopal",
-    "IIIT Bhubaneswar",
-    "IIIT Chittoor",
-    "IIIT Dharwad",
-    "IIIT Guwahati",
-    "IIIT Gwalior",
-    "IIIT Kalyani",
-    "IIIT Kanchipuram",
-    "IIIT Kota",
-    "IIIT Kottayam",
-    "IIIT Lucknow",
-    "IIIT Manipur",
-    "IIIT Nagpur",
-    "IIIT Pune",
-    "IIIT Raichur",
-    "IIIT Ranchi",
-    "IIIT Sonepat",
-    "IIIT Sri City",
-    "IIIT Surat",
-    "IIIT Tiruchirappalli",
-    "IIIT Una",
-    "IIIT Vadodara",
-    "IIIT Vadodara International Campus Diu",
-    "IIITDM Jabalpur",
-    "IIITDM Kancheepuram",
-    "IIITDM Kurnool"
-  ];
-  
+    "MNIT Jaipur",
+    "MNNIT Allahabad",
+    "VNIT Nagpur",
+    "NIT Andhra Pradesh"
+];
+
 
   const branchOptions = [
     'Computer Science and Engineering',
@@ -130,11 +101,11 @@ const AddCollege = () => {
     gender_name: '',
     state_name: '',
     category_name: '',
-    year1: '',
+    year1: '2021',
     year1_closing_rank: '',
-    year2: '',
+    year2: '2022',
     year2_closing_rank: '',
-    year3: '',
+    year3: '2023',
     year3_closing_rank: '',
     location: '',
     image_url: '', // New field for image URL
@@ -158,6 +129,13 @@ const AddCollege = () => {
       alert('Error submitting form: ' + error.message);
       console.error('Error submitting form:', error);
     }
+    setFormData((prevData) => ({
+      ...prevData,
+       year1_closing_rank: '',
+        year2_closing_rank: '',
+         year3_closing_rank: ''
+      
+    }));
   };
 
   return (
