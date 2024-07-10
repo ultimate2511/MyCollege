@@ -5,12 +5,13 @@ import './Jossa.css';
 
 const Jossa = () => {
   const { mainsForm, setMainsForm } = useContext(FormContext);
+  
   const [filters, setFilters] = useState({
     category: 'all',
     state: 'all',
     branch: 'all',
     gender: 'all',
-    collegeName: 'IIT Bombay', // Corrected: Use collegeName instead of college
+    collegeName: mainsForm.college_name, // Corrected: Use collegeName instead of college
   });
   const [filteredData, setFilteredData] = useState([]);
 
