@@ -16,18 +16,68 @@ const Jossa = () => {
 
   // Array of college names
   const collegeOptions = [
-    'IIT Bombay',
-    'NIT Warangal',
-    'NIT Trichy',
-    'IIIT Hyderabad',
-    'IIIT Delhi',
-    'IIIT Bangalore',
-    'IIEST Shibpur',
-    'Punjab Engineering College',
-    'MNNIT Allahabad'
-    // Add more colleges as needed
+    // List of NITs
+    "NIT Agartala",
+    "NIT Andhra Pradesh",
+    "NIT Arunachal Pradesh",
+    "NIT Bhopal",
+    "NIT Calicut",
+    "NIT Delhi",
+    "NIT Durgapur",
+    "NIT Goa",
+    "NIT Hamirpur",
+    "NIT Jamshedpur",
+    "NIT Kurukshetra",
+    "NIT Manipur",
+    "NIT Meghalaya",
+    "NIT Mizoram",
+    "NIT Nagaland",
+    "NIT Patna",
+    "NIT Puducherry",
+    "NIT Raipur",
+    "NIT Rourkela",
+    "NIT Sikkim",
+    "NIT Silchar",
+    "NIT Srinagar",
+    "NIT Surat",
+    "NIT Surathkal",
+    "NIT Tiruchirappalli",
+    "NIT Uttarakhand",
+    "NIT Warangal",
+    "NIT Jalandhar",
+    "NIT Jaipur",
+  
+    // List of IIITs
+    "IIIT Allahabad",
+    "IIIT Bhagalpur",
+    "IIIT Bhopal",
+    "IIIT Bhubaneswar",
+    "IIIT Chittoor",
+    "IIIT Dharwad",
+    "IIIT Guwahati",
+    "IIIT Gwalior",
+    "IIIT Kalyani",
+    "IIIT Kanchipuram",
+    "IIIT Kota",
+    "IIIT Kottayam",
+    "IIIT Lucknow",
+    "IIIT Manipur",
+    "IIIT Nagpur",
+    "IIIT Pune",
+    "IIIT Raichur",
+    "IIIT Ranchi",
+    "IIIT Sonepat",
+    "IIIT Sri City",
+    "IIIT Surat",
+    "IIIT Tiruchirappalli",
+    "IIIT Una",
+    "IIIT Vadodara",
+    "IIIT Vadodara International Campus Diu",
+    "IIITDM Jabalpur",
+    "IIITDM Kancheepuram",
+    "IIITDM Kurnool"
   ];
-
+  
   // Fetch filtered data whenever filters change
   useEffect(() => {
     const fetchFilteredData = async () => {

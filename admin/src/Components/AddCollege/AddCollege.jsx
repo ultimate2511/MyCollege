@@ -1,9 +1,73 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './AddCollege.css';
 
 const AddCollege = () => {
   // Define arrays for college names and branch names
   const collegeTypeOptions = ['NIT', 'IIIT', 'GFTI'];
+  const colleges = [
+    // List of NITs
+    "NIT Agartala",
+    "NIT Andhra Pradesh",
+    "NIT Arunachal Pradesh",
+    "NIT Bhopal",
+    "NIT Calicut",
+    "NIT Delhi",
+    "NIT Durgapur",
+    "NIT Goa",
+    "NIT Hamirpur",
+    "NIT Jamshedpur",
+    "NIT Kurukshetra",
+    "NIT Manipur",
+    "NIT Meghalaya",
+    "NIT Mizoram",
+    "NIT Nagaland",
+    "NIT Patna",
+    "NIT Puducherry",
+    "NIT Raipur",
+    "NIT Rourkela",
+    "NIT Sikkim",
+    "NIT Silchar",
+    "NIT Srinagar",
+    "NIT Surat",
+    "NIT Surathkal",
+    "NIT Tiruchirappalli",
+    "NIT Uttarakhand",
+    "NIT Warangal",
+    "NIT Jalandhar",
+    "NIT Jaipur",
+  
+    // List of IIITs
+    "IIIT Allahabad",
+    "IIIT Bhagalpur",
+    "IIIT Bhopal",
+    "IIIT Bhubaneswar",
+    "IIIT Chittoor",
+    "IIIT Dharwad",
+    "IIIT Guwahati",
+    "IIIT Gwalior",
+    "IIIT Kalyani",
+    "IIIT Kanchipuram",
+    "IIIT Kota",
+    "IIIT Kottayam",
+    "IIIT Lucknow",
+    "IIIT Manipur",
+    "IIIT Nagpur",
+    "IIIT Pune",
+    "IIIT Raichur",
+    "IIIT Ranchi",
+    "IIIT Sonepat",
+    "IIIT Sri City",
+    "IIIT Surat",
+    "IIIT Tiruchirappalli",
+    "IIIT Una",
+    "IIIT Vadodara",
+    "IIIT Vadodara International Campus Diu",
+    "IIITDM Jabalpur",
+    "IIITDM Kancheepuram",
+    "IIITDM Kurnool"
+  ];
+  
 
   const branchOptions = [
     'Computer Science and Engineering',
@@ -84,10 +148,16 @@ const AddCollege = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add form submission logic here
-    console.log('Form Data:', formData);
+    try {
+      const response = await axios.post('http://localhost:4000/postdata', formData); // Replace with your backend endpoint
+      alert('Form Data Submitted Successfully');
+      console.log('Form Data Submitted:', response.data);
+    } catch (error) {
+      alert('Error submitting form: ' + error.message);
+      console.error('Error submitting form:', error);
+    }
   };
 
   return (
@@ -103,7 +173,7 @@ const AddCollege = () => {
               onChange={handleChange}
             >
               <option value="">Select College</option>
-              {collegeTypeOptions.map((college, index) => (
+              {colleges.map((college, index) => (
                 <option key={index} value={college}>
                   {college}
                 </option>

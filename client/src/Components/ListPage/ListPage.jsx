@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import './ListPage.css';
 import FormContext from '../../Context/FormContext';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const ListPage = ({ colleges }) => {
   const { mainsForm, setMainsForm } = useContext(FormContext);
@@ -10,6 +11,24 @@ const ListPage = ({ colleges }) => {
   const [sortBranch, setSortBranch] = useState('');
   const [hoveredBranch, setHoveredBranch] = useState(null);
   const [hoveredElement, setHoveredElement] = useState(null);
+
+  const [response, setResponse] = useState([]);
+
+    // Fetch filtered data whenever filters change
+    useEffect(() => {
+      const fetchFilteredData = async () => {
+        try {
+         // console.log(mainsForm)
+          const recv = await axios.post('http://localhost:4000/predictColleges', mainsForm);
+         // console.log('predict Data:', recv.data);
+          setResponse(recv.data); // Update state with filtered data
+        } catch (error) {
+          console.error('Error in predicting colleges:', error);
+        }
+      };
+  
+      fetchFilteredData();
+    }, []); 
 
   const navigate = useNavigate();
 
@@ -73,11 +92,11 @@ const ListPage = ({ colleges }) => {
       </div>
 
       <ul className="college-list">
-        {filteredColleges.map((college, index) => (
+        {response.map((college, index) => (
           <li key={index} className="college-item">
             <img
-              src={"https://lh3.googleusercontent.com/p/AF1QipNxkZdJK9pjFJgxuGYlPlqRfKzIhnSvTZ6azvV5=s1360-w1360-h1020"}
-              alt={`${college.name} image`}
+              src={college.image_url}
+              alt={`${college.college_name} image`}
               className="college-image"
               onClick={() => handleClick(college.name)}
             />
@@ -85,19 +104,19 @@ const ListPage = ({ colleges }) => {
               className="college-details"
               onClick={() => handleClick(college.name)}
             >
-              <h4>{college.name}</h4>
+              <h4>{college.college_name}</h4>
               <p>
-                <span className="spp">Type:</span> <span className="sp">{college.type}</span>
+                <span className="spp">Type:</span> <span className="sp">{college.college_type}</span>
               </p>
               <p
                 className="branch-hover"
-                onMouseEnter={(e) => handleBranchHover(college.branch, e.target)}
+                onMouseEnter={(e) => handleBranchHover(college.college_branch, e.target)}
                 onMouseLeave={handleBranchLeave}
               >
                 <span className="spp"> Checkout your Branch:</span>
               </p>
               <p>
-                <span className="spp">Location:</span> <span className="sp">{college.location}</span>
+                <span className="spp">Location:</span> <span className="sp">{college.college_location}</span>
               </p>
               <p>
                 <span className="spp">Probability:</span> <span className="sp">100% </span>
