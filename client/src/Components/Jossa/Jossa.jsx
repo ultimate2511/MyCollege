@@ -14,7 +14,13 @@ const Jossa = () => {
     collegeName: mainsForm.college_name, // Corrected: Use collegeName instead of college
   });
   const [filteredData, setFilteredData] = useState([]);
-
+  useEffect(()=>{
+    const newfilters = {
+      ...filters,
+      collegeName:mainsForm.collegeName
+    }
+    setFilters(newfilters);
+  },[mainsForm.collegeName])
   // Array of college names
   const collegeOptions = [
     "NIT Agartala",

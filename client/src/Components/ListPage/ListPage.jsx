@@ -60,7 +60,7 @@ const ListPage = () => {
 
   useEffect(() => {
     if (collegeName) {
-      setMainsForm(prev => ({ ...prev, collegeName }));
+      setMainsForm(prev => ({ ...prev, college_name:collegeName,collegeName:collegeName }));
       navigate('/jeemains/jossa');
     }
   }, [collegeName, setMainsForm]);
