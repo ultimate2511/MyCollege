@@ -1,10 +1,9 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect} from 'react';
 import axios from 'axios';
-import FormContext from '../../Context/FormContext';
 import './Jossa.css';
 
 const Jossa = () => {
-  const { mainsForm, setMainsForm } = useContext(FormContext);
+
   const [filters, setFilters] = useState({
     category: 'all',
     state: 'all',
@@ -78,6 +77,7 @@ const Jossa = () => {
     "IIITDM Kurnool"
   ];
   
+
   // Fetch filtered data whenever filters change
   useEffect(() => {
     const fetchFilteredData = async () => {

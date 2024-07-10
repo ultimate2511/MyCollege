@@ -1,0 +1,103 @@
+/* General styles */
+.app {
+  display: flex;
+  flex-direction: row;
+}
+
+.sidebar {
+  width: 200px;
+  padding: 20px;
+  background: #f4f4f4;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Added shadow for better separation */
+}
+
+.filter-group {
+  margin-bottom: 20px;
+}
+
+.filter-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.filter-group select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.table {
+  flex-grow: 1;
+  margin-left: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+th {
+  background-color: #f2f2f2;
+  text-align: left;
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+  .app {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .table {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    padding: 10px;
+  }
+
+  .filter-group {
+    margin-bottom: 15px;
+  }
+
+  .filter-group label, .filter-group select {
+    width: 100%;
+  }
+
+  .table {
+    width: 100%;
+  }
+
+  table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  th, td {
+    padding: 10px 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .filter-group {
+    margin-bottom: 10px;
+  }
+
+  th, td {
+    padding: 8px 4px;
+  }
+}
