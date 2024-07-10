@@ -101,11 +101,19 @@ const AddCollege = () => {
     gender_name: '',
     state_name: '',
     category_name: '',
+<<<<<<< HEAD
     year1: 2021,
     year1_closing_rank: '',
     year2: 2022,
     year2_closing_rank: '',
     year3: 2023,
+=======
+    year1: '2021',
+    year1_closing_rank: '',
+    year2: '2022',
+    year2_closing_rank: '',
+    year3: '2023',
+>>>>>>> d1728326ecf7037f6f0f75a60d6d5fcbf0946c91
     year3_closing_rank: '',
     location: '',
     image_url: '', // New field for image URL
@@ -132,10 +140,18 @@ const AddCollege = () => {
     }
     setFormData((prevData) => ({
       ...prevData,
+<<<<<<< HEAD
       year1_closing_rank: '',
       year2_closing_rank: '',
       year3_closing_rank: '',
     }))
+=======
+       year1_closing_rank: '',
+        year2_closing_rank: '',
+         year3_closing_rank: ''
+      
+    }));
+>>>>>>> d1728326ecf7037f6f0f75a60d6d5fcbf0946c91
   };
 
   return (

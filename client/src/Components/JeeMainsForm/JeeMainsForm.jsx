@@ -82,7 +82,7 @@ const JEEMainForm = () => {
         >
           <option value="">-- Select --</option>
           <option value="General">General</option>
-          <option value="Ews">Ews</option>
+          <option value="EWS">Ews</option>
           <option value="OBC">OBC (Ncl)</option>
           <option value="SC">SC</option>
           <option value="ST">ST</option>

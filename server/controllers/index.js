@@ -113,11 +113,11 @@ export const postData = async (req, res) => {
        
        // query.gender_name = gender;
         query.category_name = casteGroup;
-      
+       // console.log(casteGroup);
   
       // Fetch filtered data from the database
       const filteredData = await ClosingRank.find(query);
-     // console.log(rank);
+     // console.log(filteredData);
 
       const filter2=[];
       for(let i=0;i<filteredData.length;i++){
@@ -145,20 +145,21 @@ export const postData = async (req, res) => {
             
         }
         }
-
+          
         const filter3=[];
+       // console.log(filter2);
 
-        for(let i=0;i<filteredData.length;i++){
+        for(let i=0;i<filter2.length;i++){
         
-          let rank1=filteredData[i].year3_closing_rank;
-          let rank2=filteredData[i].year2_closing_rank;
-          let rank3=filteredData[i].year1_closing_rank;
+          let rank1=filter2[i].year3_closing_rank;
+          let rank2=filter2[i].year2_closing_rank;
+          let rank3=filter2[i].year1_closing_rank;
           
            
-          if(filteredData[i].gender_name===gender && gender==='Male'){
+          if(filter2[i].gender_name===gender && gender==='Male'){
                
             if(rank<rank1 || rank<rank2 || rank<rank3){
-              filter3.push(filteredData[i]);
+              filter3.push(filter2[i]);
               
             }
 
@@ -169,7 +170,7 @@ export const postData = async (req, res) => {
           if(gender==='Female'){
                
             if(rank<rank1 || rank<rank2 || rank<rank3){
-              filter3.push(filteredData[i]);
+              filter3.push(filter2[i]);
             }
               
           }
