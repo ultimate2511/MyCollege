@@ -1,5 +1,6 @@
 import ClosingRank from '../Models/Mains.js';
-
+import express from 'express';
+import { errorHandler } from '../utils/error.js';
 export const postData = async (req, res) => {
   const {
     college_name,
@@ -229,3 +230,39 @@ uniqueColleges = Array.from(collegeMap.values());
       res.status(500).json({ error: error.message });
     }
   };
+  export const editClosingRank = async (req, res, next) => {
+    try {
+    const closingRank = await ClosingRank.findById(req.params.closingRankId);
+    if (!closingRank) {
+        return next(errorHandler(404, 'ClosingRank not found'));
+    }
+    const editedClosingRank = await ClosingRank.findByIdAndUpdate(
+        req.params.closingRankId,
+        {
+        content: req.body.content,
+        },
+        { new: true }
+    );
+    res.status(200).json(editedClosingRank);
+    } catch (error) {
+    next(error);
+    }
+};
+
+export const deleteClosingRank = async (req, res, next) => {
+    try {
+    const closingRank = await ClosingRank.findById(req.params.closingRankId);
+    if (!closingRank) {
+        return next(errorHandler(404, 'ClosingRank not found'));
+    }
+    if (closingRank.userId !== req.user.id && !req.user.isAdmin) {
+        return next(
+        errorHandler(403, 'You are not allowed to delete this closingRank')
+        );
+    }
+    await ClosingRank.findByIdAndDelete(req.params.closingRankId);
+    res.status(200).json('ClosingRank has been deleted');
+    } catch (error) {
+    next(error);
+    }
+};
