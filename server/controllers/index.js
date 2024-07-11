@@ -255,11 +255,6 @@ export const deleteClosingRank = async (req, res, next) => {
     if (!closingRank) {
         return next(errorHandler(404, 'ClosingRank not found'));
     }
-    if (closingRank.userId !== req.user.id && !req.user.isAdmin) {
-        return next(
-        errorHandler(403, 'You are not allowed to delete this closingRank')
-        );
-    }
     await ClosingRank.findByIdAndDelete(req.params.closingRankId);
     res.status(200).json('ClosingRank has been deleted');
     } catch (error) {
