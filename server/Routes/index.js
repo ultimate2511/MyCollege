@@ -3,7 +3,7 @@ const router = express.Router();
 import {postData} from '../Controllers/index.js';
 import { signup ,signin } from '../Controllers/auth.js';
 import { filterData ,predictCollege} from '../Controllers/index.js';
-import { verifyToken } from '../utils/verifyUser.js';
+
 import {
     deleteClosingRank,
     editClosingRank

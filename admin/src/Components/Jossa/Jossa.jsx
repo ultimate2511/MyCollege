@@ -1,7 +1,8 @@
 import React, { useState, useEffect} from 'react';
 import axios from 'axios';
 import './Jossa.css';
-
+import './editicon.jpg'
+import MyImage from './DeleteRed.webp';
 const Jossa = () => {
 
   const [filters, setFilters] = useState({
@@ -138,7 +139,7 @@ const Sidebar = ({ filters, handleFilterChange, collegeOptions }) => {
 
 const Table = ({ data }) => {
   const getYear = new Date().getFullYear();
-
+  const imageLink  = "https://th.bing.com/th/id/OIP.uhuImhPyEPbzcuU4mUCUVgHaHa?rs=1&pid=ImgDetMain"
   return (
     <div className="table">
       <table>
@@ -151,11 +152,13 @@ const Table = ({ data }) => {
             <th>{getYear - 1} Closing Rank</th>
             <th>{getYear - 2} Closing Rank</th>
             <th>{getYear - 3} Closing Rank</th>
+            <th>update</th>
+            <th>remove</th>
           </tr>
         </thead>
         <tbody>
           {data.map((item, index) => (
-            <tr key={index}>
+            <tr key={index} className="trow">
               <td>{item.branch_name}</td>
               <td>{item.gender_name}</td>
               <td>{item.state_name}</td>
@@ -163,6 +166,12 @@ const Table = ({ data }) => {
               <td>{item.year1_closing_rank}</td>
               <td>{item.year2_closing_rank}</td>
               <td>{item.year3_closing_rank}</td>
+              <td>
+                <img src = {imageLink} style={{width:'16px'}}/>
+              </td>
+              <td>
+                <img src={MyImage} style={{width:'16px'}}/>
+              </td>
             </tr>
           ))}
         </tbody>
