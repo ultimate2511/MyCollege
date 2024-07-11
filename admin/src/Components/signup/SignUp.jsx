@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './SignUp.css';
-
+import axios from 'axios';
 const SignUp = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -32,15 +32,35 @@ const SignUp = () => {
     return formErrors;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formErrors = validate();
     if (Object.keys(formErrors).length === 0) {
       console.log('Form Data:', formData);
+      try{
+        setErrors(null);
+        const res = await fetch('http://localhost:4000/signup', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData),
+        });
+        const data = await res.json();
+        if (data.success === false) {
+          return setErrors(data.message);
+        }
+        
+        if(res.ok) {
+          navigate('/signin');
+        }
+
+      } catch(err){
+        setErrors(err.message);
+      }
       // Handle form submission (e.g., send data to the backend)
     } else {
       setErrors(formErrors);
     }
+
   };
 
   return (
@@ -54,7 +74,7 @@ const SignUp = () => {
           value={formData.name}
           onChange={handleChange}
         />
-        {errors.name && <p className="error">{errors.name}</p>}
+        {errors && errors.name && <p className="error">{errors.name}</p>}
       </div>
       <div>
         <label>Mobile Number</label>
@@ -64,7 +84,7 @@ const SignUp = () => {
           value={formData.mobileNumber}
           onChange={handleChange}
         />
-        {errors.mobileNumber && <p className="error">{errors.mobileNumber}</p>}
+        {errors && errors.mobileNumber && <p className="error">{errors.mobileNumber}</p>}
       </div>
       <div>
         <label>Email</label>
@@ -74,7 +94,7 @@ const SignUp = () => {
           value={formData.email}
           onChange={handleChange}
         />
-        {errors.email && <p className="error">{errors.email}</p>}
+        {errors && errors.email && <p className="error">{errors.email}</p>}
       </div>
       <div>
         <label>Password</label>
@@ -84,7 +104,7 @@ const SignUp = () => {
           value={formData.password}
           onChange={handleChange}
         />
-        {errors.password && <p className="error">{errors.password}</p>}
+        {errors && errors.password && <p className="error">{errors.password}</p>}
       </div>
       
       <button className="button-63" type="submit">Sign Up</button>

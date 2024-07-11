@@ -154,9 +154,9 @@ const Table = ({ data }) => {
             <th>Gender</th>
             <th>State Quota</th>
             <th>Category</th>
-            <th>{getYear - 1} Closing Rank</th>
-            <th>{getYear - 2} Closing Rank</th>
             <th>{getYear - 3} Closing Rank</th>
+            <th>{getYear - 2} Closing Rank</th>
+            <th>{getYear - 1} Closing Rank</th>
           </tr>
         </thead>
         <tbody>

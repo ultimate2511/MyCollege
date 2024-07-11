@@ -8,26 +8,79 @@ import searchicon from './search.png';
 const Navbar = () => {
   const { mainsForm, setMainsForm } = useContext(FormContext);
   const [searchQuery, setSearchQuery] = useState('');
+  const [filteredColleges, setFilteredColleges] = useState([]);
   const navigate = useNavigate();
+  const collegeOptions = [
+    "NIT Agartala",
+    "NIT Arunachal Pradesh",
+    "NIT Andhra Pradesh",
+    "MANIT Bhopal",
+    "NIT Calicut",
+    "NIT Delhi",
+    "NIT Durgapur",
+    "NIT Goa",
+    "NIT Hamirpur",
+    "NIT Jamshedpur",
+    "NIT Kurukshetra",
+    "NIT Manipur",
+    "NIT Meghalaya",
+    "NIT Mizoram",
+    "NIT Nagaland",
+    "NIT Patna",
+    "NIT Puducherry",
+    "NIT Raipur",
+    "NIT Rourkela",
+    "NIT Sikkim",
+    "NIT Silchar",
+    "NIT Srinagar",
+    "SVNIT Surat",
+    "NIT Tiruchirappalli",
+    "NIT Uttarakhand",
+    "NIT Warangal",
+    "NIT Jalandhar",
+    "MNIT Jaipur",
+    "MNNIT Allahabad",
+    "VNIT Nagpur",
+    "NIT Andhra Pradesh"
+  ];
 
   const handleSearchChange = (event) => {
-    setSearchQuery(event.target.value);
+    const query = event.target.value;
+    setSearchQuery(query);
+
+    if (query) {
+      const filtered = collegeOptions.filter(college =>
+        college.toLowerCase().includes(query.toLowerCase())
+      );
+      setFilteredColleges(filtered);
+    } else {
+      setFilteredColleges([]);
+    }
   };
 
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
       event.preventDefault();
-      // Navigate to /jeemains/jossa and pass the college name as a query parameter or state
-      const newForm = {
-        ...mainsForm,
-        college_name: searchQuery,
-        collegeName:searchQuery
-      };
-      setMainsForm(newForm);
-      console.log(newForm);
-      navigate('/jeemains/jossa');
-      setSearchQuery(''); // Clear the search box
+      executeSearch(searchQuery);
     }
+  };
+
+  const executeSearch = (query) => {
+    const newForm = {
+      ...mainsForm,
+      college_name: query,
+      collegeName: query
+    };
+    setMainsForm(newForm);
+    console.log(newForm);
+    navigate('/jeemains/jossa');
+    setSearchQuery(''); // Clear the search box
+    setFilteredColleges([]); // Clear the suggestions
+  };
+
+  const handleSuggestionClick = (suggestion) => {
+    setSearchQuery(suggestion);
+    executeSearch(suggestion);
   };
 
   return (
@@ -45,6 +98,15 @@ const Navbar = () => {
           onKeyPress={handleKeyPress}
           placeholder="Search Colleges..."
         />
+        {filteredColleges.length > 0 && (
+          <ul className="suggestions">
+            {filteredColleges.map((college, index) => (
+              <li key={index} onClick={() => handleSuggestionClick(college)}>
+                {college}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </nav>
   );
