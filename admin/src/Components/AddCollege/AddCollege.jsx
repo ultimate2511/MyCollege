@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 import axios from 'axios';
 import './AddCollege.css';
-
+import UserContext from '../../Context/UserContext';
 const AddCollege = () => {
+  const { user, setUser } = useContext(UserContext);
   // Define arrays for college names and branch names
   const collegeTypeOptions = ['NIT', 'IIIT', 'GFTI'];
   const colleges = [

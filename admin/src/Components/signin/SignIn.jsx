@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './SignIn.css';
-
+import UserContext from '../../Context/UserContext';
 const SignIn = () => {
+  const { user, setUser } = useContext(UserContext);
   const [formData, setFormData] = useState({
     mobileNumber: '',
     email: '',
@@ -53,6 +54,8 @@ const SignIn = () => {
           body: JSON.stringify(formData),
         });
         const data = await res.json();
+        console.log(data);
+        setUser(data);
         if (res.ok) {
           navigate('/');
         } else {

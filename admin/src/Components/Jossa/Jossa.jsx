@@ -1,10 +1,11 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect,useContext} from 'react';
 import axios from 'axios';
 import './Jossa.css';
 import './editicon.jpg'
 import MyImage from './DeleteRed.webp';
+import UserContext from '../../Context/UserContext';
 const Jossa = () => {
-
+  const { user, setUser } = useContext(UserContext);
   const [filters, setFilters] = useState({
     category: 'all',
     state: 'all',
