@@ -8,6 +8,23 @@ import  SignUp  from '../signup/SignUp.jsx'
 import UserContext from '../../Context/UserContext';
 const Navbar = ({ userName }) => {
   const { user, setUser } = useContext(UserContext);
+  console.log(user);
+  const handleSignout = async () => {
+    try {
+      const res = await fetch('http://localhost:4000/signout', {
+        method: 'POST',
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        console.log(data.message);
+      } else {
+        setUser('');
+        console.log(user);
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   return (
     <nav className="navbar">
       <div className="navbar-logo">
@@ -23,9 +40,12 @@ const Navbar = ({ userName }) => {
           <FaUser />Profile
           <span className="profile-name">{user.name}</span>
         </div>
-        <a href="/signin" className="navbar-login">
+        {user ?<a href="/signin" className="navbar-login">
+          <FaSignInAlt onClick = {handleSignout} /> SignOut
+        </a>:<a href="/signin" className="navbar-login">
           <FaSignInAlt /> SignIn
-        </a>
+        </a> }
+        
       </div>
     </nav>
   );
