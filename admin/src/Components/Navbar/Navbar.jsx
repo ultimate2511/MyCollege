@@ -1,14 +1,15 @@
-import React ,{useContext} from 'react';
+import React, { useContext } from 'react';
 import './Navbar.scss';
 import logo from './logo.webp';  // Assuming you have a logo image in the src directory
 import searchicon from './search.png';
 import { FaUser, FaSignInAlt } from 'react-icons/fa';  // Importing icons for user profile and login
-import  SignIn  from '../signin/SignIn.jsx'
-import  SignUp  from '../signup/SignUp.jsx'
+import { useNavigate } from 'react-router-dom';
 import UserContext from '../../Context/UserContext';
-const Navbar = ({ userName }) => {
+
+const Navbar = () => {
   const { user, setUser } = useContext(UserContext);
-  console.log(user);
+  const navigate = useNavigate();
+
   const handleSignout = async () => {
     try {
       const res = await fetch('http://localhost:4000/signout', {
@@ -18,18 +19,19 @@ const Navbar = ({ userName }) => {
       if (!res.ok) {
         console.log(data.message);
       } else {
-        setUser('');
-        console.log(user);
+        setUser(null);  // Update user state to null
+        navigate('/signin') // Navigate to sign-in page
       }
     } catch (error) {
       console.log(error.message);
     }
   };
+
   return (
     <nav className="navbar">
       <div className="navbar-logo">
         <img src={logo} alt="Logo" />
-        <span className="navbar-name">MyCollege <br/>Admin</span>
+        <span className="navbar-name">MyCollege <br />Admin</span>
       </div>
       <div className="navbar-search">
         <img src={searchicon} alt="Search Icon" />
@@ -37,15 +39,18 @@ const Navbar = ({ userName }) => {
       </div>
       <div className="navbar-right">
         <div className="navbar-profile">
-          <FaUser />Profile
-          <span className="profile-name">{user.name}</span>
+          <FaUser /> Profile
+          <span className="profile-name">{user?.name}</span>
         </div>
-        {user ?<a href="/signin" className="navbar-login">
-          <FaSignInAlt onClick = {handleSignout} /> SignOut
-        </a>:<a href="/signin" className="navbar-login">
-          <FaSignInAlt /> SignIn
-        </a> }
-        
+        {user ? (
+          <button onClick={handleSignout} className="navbar-login">
+            <FaSignInAlt /> Sign Out
+          </button>
+        ) : (
+          <a href="/signin" className="navbar-login">
+            <FaSignInAlt /> Sign In
+          </a>
+        )}
       </div>
     </nav>
   );

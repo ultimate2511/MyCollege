@@ -231,25 +231,67 @@ uniqueColleges = Array.from(collegeMap.values());
     }
   };
   export const editClosingRank = async (req, res, next) => {
+    if (!req.user.isAdmin || req.user.id !== req.params.userId) {
+      return next(errorHandler(403, 'You are not allowed to update this post'));
+    }
+    
     try {
-    const closingRank = await ClosingRank.findById(req.params.closingRankId);
-    if (!closingRank) {
+      const closingRank = await ClosingRank.findById(req.params.closingRankId);
+      if (!closingRank) {
         return next(errorHandler(404, 'ClosingRank not found'));
-    }
-    const editedClosingRank = await ClosingRank.findByIdAndUpdate(
+      }
+      
+      const {
+        college_name,
+        college_type,
+        branch_name,
+        gender_name,
+        state_name,
+        category_name,
+        year1,
+        year1_closing_rank,
+        year2,
+        year2_closing_rank,
+        year3,
+        year3_closing_rank,
+        image_url,
+        location
+      } = req.body;
+  
+      const updatedContent = {
+        college_name,
+        college_type,
+        branch_name,
+        gender_name,
+        state_name,
+        category_name,
+        year1,
+        year1_closing_rank,
+        year2,
+        year2_closing_rank,
+        year3,
+        year3_closing_rank,
+        image_url,
+        location
+      };
+  
+      const editedClosingRank = await ClosingRank.findByIdAndUpdate(
         req.params.closingRankId,
-        {
-        content: req.body.content,
-        },
+        { content: updatedContent },
         { new: true }
-    );
-    res.status(200).json(editedClosingRank);
+      );
+  
+      res.status(200).json(editedClosingRank);
     } catch (error) {
-    next(error);
+      next(error);
     }
-};
+  };
+  
 
 export const deleteClosingRank = async (req, res, next) => {
+  // if (!req.user.isAdmin || req.user.id !== req.params.userId) {
+  //   return next(errorHandler(403, 'You are not allowed to delete this post'));
+  // }
     try {
     const closingRank = await ClosingRank.findById(req.params.closingRankId);
     if (!closingRank) {

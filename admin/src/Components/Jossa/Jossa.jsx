@@ -1,11 +1,11 @@
-import React, { useState, useEffect,useContext} from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import './Jossa.css';
-import './editicon.jpg'
+import './editicon.jpg';
 import MyImage from './DeleteRed.webp';
 import UserContext from '../../Context/UserContext';
+
 const Jossa = () => {
-  const { user, setUser } = useContext(UserContext);
   const [filters, setFilters] = useState({
     category: 'all',
     state: 'all',
@@ -17,40 +17,12 @@ const Jossa = () => {
 
   // Array of college names
   const collegeOptions = [
-    "NIT Agartala",
-    "NIT Arunachal Pradesh",
-    "NIT Andhra Pradesh",
-    "MANIT Bhopal",
-    "NIT Calicut",
-    "NIT Delhi",
-    "NIT Durgapur",
-    "NIT Goa",
-    "NIT Hamirpur",
-    "NIT Jamshedpur",
-    "NIT Kurukshetra",
-    "NIT Manipur",
-    "NIT Meghalaya",
-    "NIT Mizoram",
-    "NIT Nagaland",
-    "NIT Patna",
-    "NIT Puducherry",
-    "NIT Raipur",
-    "NIT Rourkela",
-    "NIT Sikkim",
-    "NIT Silchar",
-    "NIT Srinagar",
-    "SVNIT Surat",
-    "NIT Tiruchirappalli",
-    "NIT Uttarakhand",
-    "NIT Warangal",
-    "NIT Jalandhar",
-    "MNIT Jaipur",
-    "MNNIT Allahabad",
-    "VNIT Nagpur",
-    "NIT Andhra Pradesh"
-];
-
-  
+    "NIT Agartala", "NIT Arunachal Pradesh", "NIT Andhra Pradesh", "MANIT Bhopal", "NIT Calicut", "NIT Delhi",
+    "NIT Durgapur", "NIT Goa", "NIT Hamirpur", "NIT Jamshedpur", "NIT Kurukshetra", "NIT Manipur", "NIT Meghalaya",
+    "NIT Mizoram", "NIT Nagaland", "NIT Patna", "NIT Puducherry", "NIT Raipur", "NIT Rourkela", "NIT Sikkim",
+    "NIT Silchar", "NIT Srinagar", "SVNIT Surat", "NIT Tiruchirappalli", "NIT Uttarakhand", "NIT Warangal",
+    "NIT Jalandhar", "MNIT Jaipur", "MNNIT Allahabad", "VNIT Nagpur", "NIT Andhra Pradesh"
+  ];
 
   // Fetch filtered data whenever filters change
   useEffect(() => {
@@ -78,7 +50,7 @@ const Jossa = () => {
   return (
     <div className="app">
       <Sidebar filters={filters} handleFilterChange={handleFilterChange} collegeOptions={collegeOptions} />
-      <Table data={filteredData} />
+      <Table data={filteredData} setData ={setFilteredData}/>
     </div>
   );
 };
@@ -138,9 +110,33 @@ const Sidebar = ({ filters, handleFilterChange, collegeOptions }) => {
   );
 };
 
-const Table = ({ data }) => {
+const Table = ({ data,setData }) => {
   const getYear = new Date().getFullYear();
   const imageLink  = "https://th.bing.com/th/id/OIP.uhuImhPyEPbzcuU4mUCUVgHaHa?rs=1&pid=ImgDetMain"
+
+  const handleDelete = async(item) => {
+    console.log('Item to delete:', item._id);
+    // Perform delete action here
+    try {
+      const res = await fetch(
+        `http://localhost:4000/deleteClosingRank/${item._id}`,
+        {
+          method: 'DELETE',
+        }
+      );
+      const data = await res.json();
+      if (!res.ok) {
+        console.log(data.message);
+      } else {
+        setData((prev) =>
+          prev.filter((post) => post._id !== item._id)
+        );
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   return (
     <div className="table">
       <table>
@@ -168,10 +164,10 @@ const Table = ({ data }) => {
               <td>{item.year2_closing_rank}</td>
               <td>{item.year3_closing_rank}</td>
               <td>
-                <img src = {imageLink} style={{width:'16px'}}/>
+                <img src={imageLink} style={{ width: '16px' }} alt="update" />
               </td>
               <td>
-                <img src={MyImage} style={{width:'16px'}}/>
+                <img src={MyImage} style={{ width: '16px' }} alt="delete" onClick={() => handleDelete(item)} />
               </td>
             </tr>
           ))}
