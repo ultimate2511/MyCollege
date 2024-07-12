@@ -6,6 +6,7 @@ import { Routes,Route } from 'react-router-dom';
 import AddCollege from './Components/AddCollege/AddCollege.jsx'
 import SignUp from './Components/signup/SignUp.jsx';
 import SignIn from './Components/signin/SignIn.jsx';
+import Update from './Components/update/Update.jsx';
 
 function App() {
   
@@ -17,6 +18,7 @@ function App() {
       <Routes>
         <Route path='/' element={<AddCollege/>}/>
         <Route path="/show-colleges" element={<Jossa />} />
+        <Route path="/update" element = {<Update/>}/>
         <Route path="/signup" element = {<SignUp/>}/>
           <Route path="/signin" element = {<SignIn/>}/>
       </Routes>

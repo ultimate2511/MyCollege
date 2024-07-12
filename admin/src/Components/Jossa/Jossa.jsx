@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import './Jossa.css';
 import './editicon.jpg';
+import {useNavigate} from 'react-router-dom'
 import MyImage from './DeleteRed.webp';
 import UserContext from '../../Context/UserContext';
 
@@ -111,6 +112,7 @@ const Sidebar = ({ filters, handleFilterChange, collegeOptions }) => {
 };
 
 const Table = ({ data,setData }) => {
+  const navigate = useNavigate();
   const getYear = new Date().getFullYear();
   const imageLink  = "https://th.bing.com/th/id/OIP.uhuImhPyEPbzcuU4mUCUVgHaHa?rs=1&pid=ImgDetMain"
 
@@ -136,7 +138,10 @@ const Table = ({ data,setData }) => {
       console.log(error.message);
     }
   };
-
+  const handleUpdate = (item) =>{
+    console.log('Item to update:', item._id);
+    navigate('/update',{state:item});
+  }
   return (
     <div className="table">
       <table>
@@ -164,7 +169,7 @@ const Table = ({ data,setData }) => {
               <td>{item.year2_closing_rank}</td>
               <td>{item.year3_closing_rank}</td>
               <td>
-                <img src={imageLink} style={{ width: '16px' }} alt="update" />
+                <img src={imageLink} style={{ width: '16px' }} alt="update" onClick = {()=>handleUpdate(item)} />
               </td>
               <td>
                 <img src={MyImage} style={{ width: '16px' }} alt="delete" onClick={() => handleDelete(item)} />

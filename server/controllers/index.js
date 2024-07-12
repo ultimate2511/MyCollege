@@ -231,53 +231,36 @@ uniqueColleges = Array.from(collegeMap.values());
     }
   };
   export const editClosingRank = async (req, res, next) => {
-    if (!req.user.isAdmin || req.user.id !== req.params.userId) {
-      return next(errorHandler(403, 'You are not allowed to update this post'));
-    }
+    // if (!req.user.isAdmin) {
+    //   return next(errorHandler(403, 'You are not allowed to update this post'));
+    // }
     
     try {
       const closingRank = await ClosingRank.findById(req.params.closingRankId);
       if (!closingRank) {
-        return next(errorHandler(404, 'ClosingRank not found'));
+        return res.status(404).json({ message: 'ClosingRank not found' });
       }
-      
-      const {
-        college_name,
-        college_type,
-        branch_name,
-        gender_name,
-        state_name,
-        category_name,
-        year1,
-        year1_closing_rank,
-        year2,
-        year2_closing_rank,
-        year3,
-        year3_closing_rank,
-        image_url,
-        location
-      } = req.body;
   
       const updatedContent = {
-        college_name,
-        college_type,
-        branch_name,
-        gender_name,
-        state_name,
-        category_name,
-        year1,
-        year1_closing_rank,
-        year2,
-        year2_closing_rank,
-        year3,
-        year3_closing_rank,
-        image_url,
-        location
+        college_name: req.body.college_name,
+        college_type: req.body.college_type,
+        branch_name: req.body.branch_name,
+        gender_name: req.body.gender_name,
+        state_name: req.body.state_name,
+        category_name: req.body.category_name,
+        year1: req.body.year1,
+        year1_closing_rank: req.body.year1_closing_rank,
+        year2: req.body.year2,
+        year2_closing_rank: req.body.year2_closing_rank,
+        year3: req.body.year3,
+        year3_closing_rank: req.body.year3_closing_rank,
+        image_url: req.body.image_url,
+        location: req.body.location,
       };
   
       const editedClosingRank = await ClosingRank.findByIdAndUpdate(
         req.params.closingRankId,
-        { content: updatedContent },
+        updatedContent,
         { new: true }
       );
   
@@ -289,7 +272,7 @@ uniqueColleges = Array.from(collegeMap.values());
   
 
 export const deleteClosingRank = async (req, res, next) => {
-  // if (!req.user.isAdmin || req.user.id !== req.params.userId) {
+  // if (!req.user.isAdmin) {
   //   return next(errorHandler(403, 'You are not allowed to delete this post'));
   // }
     try {
