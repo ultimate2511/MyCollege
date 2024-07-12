@@ -1,57 +1,53 @@
-import React, { useState, useEffect, useContext } from 'react';
-import {useNavigate} from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import MyImage from './DeleteRed.webp';
 import axios from 'axios';
 import './Jossa.css';
-import './editicon.jpg';
-
 
 const Jossa = () => {
-
-  
   const [filters, setFilters] = useState({
     category: 'all',
     state: 'all',
     branch: 'all',
     gender: 'all',
-    collegeName:'NIT Agartala', // Corrected: Use collegeName instead of college
+    collegeName: 'NIT Agartala', // Corrected: Use collegeName instead of college
   });
   const [filteredData, setFilteredData] = useState([]);
 
   // Array of college names
   const collegeOptions = [
-    "NIT Agartala",
-    "NIT Arunachal Pradesh",
-    "NIT Andhra Pradesh",
-    "MANIT Bhopal",
-    "NIT Calicut",
-    "NIT Delhi",
-    "NIT Durgapur",
-    "NIT Goa",
-    "NIT Hamirpur",
-    "NIT Jamshedpur",
-    "NIT Kurukshetra",
-    "NIT Manipur",
-    "NIT Meghalaya",
-    "NIT Mizoram",
-    "NIT Nagaland",
-    "NIT Patna",
-    "NIT Puducherry",
-    "NIT Raipur",
-    "NIT Rourkela",
-    "NIT Sikkim",
-    "NIT Silchar",
-    "NIT Srinagar",
-    "SVNIT Surat",
-    "NIT Tiruchirappalli",
-    "NIT Uttarakhand",
-    "NIT Warangal",
-    "NIT Jalandhar",
-    "MNIT Jaipur",
-    "MNNIT Allahabad",
-    "VNIT Nagpur",
-    "NIT Andhra Pradesh"
-];
+    'NIT Agartala',
+    'NIT Arunachal Pradesh',
+    'NIT Andhra Pradesh',
+    'MANIT Bhopal',
+    'NIT Calicut',
+    'NIT Delhi',
+    'NIT Durgapur',
+    'NIT Goa',
+    'NIT Hamirpur',
+    'NIT Jamshedpur',
+    'NIT Kurukshetra',
+    'NIT Manipur',
+    'NIT Meghalaya',
+    'NIT Mizoram',
+    'NIT Nagaland',
+    'NIT Patna',
+    'NIT Puducherry',
+    'NIT Raipur',
+    'NIT Rourkela',
+    'NIT Sikkim',
+    'NIT Silchar',
+    'NIT Srinagar',
+    'SVNIT Surat',
+    'NIT Tiruchirappalli',
+    'NIT Uttarakhand',
+    'NIT Warangal',
+    'NIT Jalandhar',
+    'MNIT Jaipur',
+    'MNNIT Allahabad',
+    'VNIT Nagpur',
+    'NIT Andhra Pradesh',
+  ];
 
   // Fetch filtered data whenever filters change
   useEffect(() => {
@@ -75,10 +71,11 @@ const Jossa = () => {
       [name]: value,
     }));
   };
+
   return (
     <div className="app">
       <Sidebar filters={filters} handleFilterChange={handleFilterChange} collegeOptions={collegeOptions} />
-      <Table data={filteredData} setData ={setFilteredData}/>
+      <Table data={filteredData} setData={setFilteredData} />
     </div>
   );
 };
@@ -91,7 +88,9 @@ const Sidebar = ({ filters, handleFilterChange, collegeOptions }) => {
         <label htmlFor="collegeName">Select College:</label> {/* Corrected: Use collegeName */}
         <select id="collegeName" name="collegeName" value={filters.collegeName} onChange={handleFilterChange}>
           {collegeOptions.map((college, index) => (
-            <option key={index} value={college}>{college}</option>
+            <option key={index} value={college}>
+              {college}
+            </option>
           ))}
         </select>
       </div>
@@ -138,38 +137,38 @@ const Sidebar = ({ filters, handleFilterChange, collegeOptions }) => {
   );
 };
 
-const Table = ({ data,setData }) => {
+const Table = ({ data, setData }) => {
   const navigate = useNavigate();
   const getYear = new Date().getFullYear();
-  const imageLink  = "https://th.bing.com/th/id/OIP.uhuImhPyEPbzcuU4mUCUVgHaHa?rs=1&pid=ImgDetMain"
+  const imageLink = 'https://th.bing.com/th/id/OIP.uhuImhPyEPbzcuU4mUCUVgHaHa?rs=1&pid=ImgDetMain';
 
-  const handleDelete = async(item) => {
+  const [hoveredDelete, setHoveredDelete] = useState(null);
+  const [hoveredEdit, setHoveredEdit] = useState(null);
+
+  const handleDelete = async (item) => {
     console.log('Item to delete:', item._id);
     // Perform delete action here
     try {
-      const res = await fetch(
-        `http://localhost:4000/deleteClosingRank/${item._id}`,
-        {
-          method: 'DELETE',
-        }
-      );
+      const res = await fetch(`http://localhost:4000/deleteClosingRank/${item._id}`, {
+        method: 'DELETE',
+      });
       const data = await res.json();
       if (!res.ok) {
         console.log(data.message);
       } else {
-        setData((prev) =>
-          prev.filter((post) => post._id !== item._id)
-        );
+        setData((prev) => prev.filter((post) => post._id !== item._id));
       }
     } catch (error) {
       console.log(error.message);
     }
   };
-  const handleUpdate = (item) =>{
+
+  const handleUpdate = (item) => {
     console.log('Item to update:', item._id);
     const id = item._id;
     navigate(`/update/${id}`);
-  }
+  };
+
   return (
     <div className="table">
       <table>
@@ -182,8 +181,8 @@ const Table = ({ data,setData }) => {
             <th>{getYear - 3} Closing Rank</th>
             <th>{getYear - 2} Closing Rank</th>
             <th>{getYear - 1} Closing Rank</th>
-            <th>update</th>
-            <th>remove</th>
+            <th>Update</th>
+            <th>Remove</th>
           </tr>
         </thead>
         <tbody>
@@ -197,10 +196,32 @@ const Table = ({ data,setData }) => {
               <td>{item.year2_closing_rank}</td>
               <td>{item.year3_closing_rank}</td>
               <td>
-                <img src={imageLink} style={{ width: '16px' }} alt="update" onClick = {()=>handleUpdate(item)} />
+                <img
+                  src={imageLink}
+                  style={{
+                    width: '16px',
+                    cursor: 'pointer',
+                    opacity: hoveredEdit === index ? 0.7 : 1,
+                  }}
+                  alt="update"
+                  onClick={() => handleUpdate(item)}
+                  onMouseEnter={() => setHoveredEdit(index)}
+                  onMouseLeave={() => setHoveredEdit(null)}
+                />
               </td>
               <td>
-                <img src={MyImage} style={{ width: '16px' }} alt="delete" onClick={() => handleDelete(item)} />
+                <img
+                  src={MyImage}
+                  style={{
+                    width: '16px',
+                    cursor: 'pointer',
+                    opacity: hoveredDelete === index ? 0.7 : 1,
+                  }}
+                  alt="delete"
+                  onClick={() => handleDelete(item)}
+                  onMouseEnter={() => setHoveredDelete(index)}
+                  onMouseLeave={() => setHoveredDelete(null)}
+                />
               </td>
             </tr>
           ))}
@@ -209,4 +230,5 @@ const Table = ({ data,setData }) => {
     </div>
   );
 };
+
 export default Jossa;

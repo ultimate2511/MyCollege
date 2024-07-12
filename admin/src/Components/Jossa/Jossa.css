@@ -102,3 +102,17 @@ th {
     padding: 8px 4px; /* Adjust padding */
   }
 }
+/* Existing CSS code */
+
+/* Add hover effect for delete icon */
+img.delete-icon:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+/* Add hover effect for edit icon */
+img.edit-icon:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
