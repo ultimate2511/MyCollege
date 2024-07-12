@@ -72,7 +72,7 @@ const Navbar = () => {
       collegeName: query,
     };
     setMainsForm(newForm);
-    console.log(newForm);
+    // console.log(newForm);
     navigate('/jeemains/jossa');
     setSearchQuery(''); // Clear the search box
     setFilteredColleges([]); // Clear the suggestions

@@ -39,7 +39,7 @@ export const  signup = async (req, res) => {
       res.json('Signup successful');
       
     } catch (err) {
-      console.error(err.message);
+      // console.error(err.message);
       res.status(500).send('Server error');
     }
   }
@@ -74,7 +74,7 @@ export const signin = async (req, res) => {
         })
         .json(rest);
     } catch(err){
-        console.error(err.message);
+        // console.error(err.message);
       res.status(500).send('Server error');
     }
 }

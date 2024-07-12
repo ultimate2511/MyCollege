@@ -61,10 +61,10 @@ const Jossa = () => {
     const fetchFilteredData = async () => {
       try {
         const response = await axios.post('http://localhost:4000/filterdata', filters);
-        console.log('Filtered Data:', response.data);
+        // console.log('Filtered Data:', response.data);
         setFilteredData(response.data); // Update state with filtered data
       } catch (error) {
-        console.error('Error fetching filtered data:', error);
+        // console.error('Error fetching filtered data:', error);
       }
     };
 
