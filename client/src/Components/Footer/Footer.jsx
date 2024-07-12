@@ -6,15 +6,25 @@ import facebookIcon from './facebook.png';
 import twitterIcon from './twitter.png';
 import linkedinIcon from './linkedin.png';
 import instagramIcon from './instagram.png';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth' // Optional: adds a smooth scrolling effect
+    });
+  };
+
   return (
     <footer className="footer">
       <div className="footer-top">
-        <div className="footer-logo">
-          <img src={logo} alt="Logo" />
-          <span className="footer-name">MyCollege</span>
-        </div>
+        <Link to='/' style={{ textDecoration: 'none' }} onClick={scrollToTop}>
+          <div className="footer-logo">
+            <img src={logo} alt="Logo" />
+            <span className="footer-name" style={{ color: 'white' }}>MyCollege</span>
+          </div>
+        </Link>
         <div className="footer-about">
           <h2>About Us</h2>
           <p>
@@ -34,16 +44,16 @@ const Footer = () => {
           <h2>Follow Us</h2>
           <div className="social-icons">
             <a href="https://www.facebook.com/profile.php?id=100075846414740" target="_blank" rel="noopener noreferrer">
-              <img  src={facebookIcon}alt="Facebook" />
+              <img src={facebookIcon} alt="Facebook" />
             </a>
             <a href="https://www.linkedin.com/in/gourabh-raghuwanshi-62831924a/" target="_blank" rel="noopener noreferrer">
-              <img  src={twitterIcon}alt="Twitter" />
+              <img src={twitterIcon} alt="Twitter" />
             </a>
             <a href="https://www.linkedin.com/in/anish-raj-576912224/" target="_blank" rel="noopener noreferrer">
-              <img  src={linkedinIcon}alt="LinkedIn" />
+              <img src={linkedinIcon} alt="LinkedIn" />
             </a>
             <a href="https://www.instagram.com/ultimate_2511/" target="_blank" rel="noopener noreferrer">
-              <img  src={instagramIcon}alt="Instagram" />
+              <img src={instagramIcon} alt="Instagram" />
             </a>
           </div>
         </div>

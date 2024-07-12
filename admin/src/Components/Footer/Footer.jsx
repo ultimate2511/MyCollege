@@ -6,15 +6,16 @@ import facebookIcon from './facebook.png';
 import twitterIcon from './twitter.png';
 import linkedinIcon from './linkedin.png';
 import instagramIcon from './instagram.png';
+import {Link} from 'react-router-dom';
 
 const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-top">
-        <div className="footer-logo">
+      <Link to='/' style={{textDecoration:'none'}}>  <div className="footer-logo">
           <img src={logo} alt="Logo" />
-          <span className="footer-name">MyCollege</span>
-        </div>
+          <span className="footer-name" style={{ color: 'white' }}>MyCollege</span>
+        </div></Link>
         <div className="footer-about">
           <h2>About Us</h2>
           <p>
