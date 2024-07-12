@@ -29,7 +29,7 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-     <Link to='/'  > <div className="navbar-logo">
+     <Link to='/' style={{ textDecoration: 'none' }} > <div className="navbar-logo">
         <img src={logo} alt="Logo" />
        <span className="navbar-name" style ={{color:'white'}}>MyCollege <br />Admin</span>
       </div>
