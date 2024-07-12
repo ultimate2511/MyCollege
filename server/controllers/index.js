@@ -90,7 +90,18 @@ export const postData = async (req, res) => {
   };
 
 
-
+  export const detailUsingId = async(req,res) =>{
+    try {
+      const closingRank = await ClosingRank.findById(req.params.closingRankId);
+      if (!closingRank) {
+        return res.status(404).json({ message: 'ClosingRank not found' });
+      }
+      res.json(closingRank);
+    } catch (error) {
+      console.error('Error fetching filtered data:', error);
+        res.status(500).json({ error: error.message });
+    }
+  }
   
 
   export const predictCollege = async (req, res) => {

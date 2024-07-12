@@ -1,12 +1,15 @@
-import React, { useState,useContext } from 'react';
+import React, { useState,useContext,useEffect } from 'react';
 import axios from 'axios';
-import {useNavigate,useLocation} from 'react-router-dom'
+import {useNavigate,useLocation,useParams} from 'react-router-dom'
 
 import './Update.css';
 const Update = () => {
+  const { id } = useParams();
+  console.log("hi",id);
     const navigate = useNavigate();
-    const location = useLocation();
-    const obj = location.state || {};
+
+    const obj = {};
+    const [formData, setFormData] = useState(obj);
   const collegeTypeOptions = ['NIT', 'IIIT', 'GFTI'];
   const colleges = [
     "NIT Agartala",
@@ -96,8 +99,20 @@ const Update = () => {
     'Uttarakhand',
     'West Bengal',
   ];
+  useEffect(()=>{
+    const fetchFilteredData = async () => {
+      try {
+        const response = await axios.post(`http://localhost:4000/detailUsingId/${id}`);
+        console.log(response.data);
+        setFormData(response.data); // Update state with filtered data
+      } catch (error) {
+        console.error('Error fetching filtered data:', error);
+      }
+    };
 
-  const [formData, setFormData] = useState(obj);
+    fetchFilteredData();
+  },[])
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;

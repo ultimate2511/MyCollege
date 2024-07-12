@@ -140,7 +140,8 @@ const Table = ({ data,setData }) => {
   };
   const handleUpdate = (item) =>{
     console.log('Item to update:', item._id);
-    navigate('/update',{state:item});
+    const id = item._id;
+    navigate(`/update/${id}`);
   }
   return (
     <div className="table">

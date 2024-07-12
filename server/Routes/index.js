@@ -1,6 +1,6 @@
 import express from 'express';
 const router = express.Router();
-import {postData} from '../Controllers/index.js';
+import {detailUsingId, postData} from '../Controllers/index.js';
 import { signup ,signin,signout } from '../Controllers/auth.js';
 import { filterData ,predictCollege} from '../Controllers/index.js';
 
@@ -16,4 +16,5 @@ router.post('/signout', signout);
 router.post('/predictColleges',predictCollege);
 router.put('/editClosingRank/:closingRankId',  editClosingRank);
 router.delete('/deleteClosingRank/:closingRankId',  deleteClosingRank);
+router.post('/detailUsingId/:closingRankId',detailUsingId);
 export default router;
