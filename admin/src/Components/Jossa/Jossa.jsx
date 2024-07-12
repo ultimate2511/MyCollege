@@ -1,29 +1,57 @@
 import React, { useState, useEffect, useContext } from 'react';
+import {useNavigate} from 'react-router-dom';
+import MyImage from './DeleteRed.webp';
 import axios from 'axios';
 import './Jossa.css';
 import './editicon.jpg';
-import {useNavigate} from 'react-router-dom'
-import MyImage from './DeleteRed.webp';
-import UserContext from '../../Context/UserContext';
+
 
 const Jossa = () => {
+
+  
   const [filters, setFilters] = useState({
     category: 'all',
     state: 'all',
     branch: 'all',
     gender: 'all',
-    collegeName: 'IIT Bombay', // Corrected: Use collegeName instead of college
+    collegeName:'NIT Agartala', // Corrected: Use collegeName instead of college
   });
   const [filteredData, setFilteredData] = useState([]);
 
   // Array of college names
   const collegeOptions = [
-    "NIT Agartala", "NIT Arunachal Pradesh", "NIT Andhra Pradesh", "MANIT Bhopal", "NIT Calicut", "NIT Delhi",
-    "NIT Durgapur", "NIT Goa", "NIT Hamirpur", "NIT Jamshedpur", "NIT Kurukshetra", "NIT Manipur", "NIT Meghalaya",
-    "NIT Mizoram", "NIT Nagaland", "NIT Patna", "NIT Puducherry", "NIT Raipur", "NIT Rourkela", "NIT Sikkim",
-    "NIT Silchar", "NIT Srinagar", "SVNIT Surat", "NIT Tiruchirappalli", "NIT Uttarakhand", "NIT Warangal",
-    "NIT Jalandhar", "MNIT Jaipur", "MNNIT Allahabad", "VNIT Nagpur", "NIT Andhra Pradesh"
-  ];
+    "NIT Agartala",
+    "NIT Arunachal Pradesh",
+    "NIT Andhra Pradesh",
+    "MANIT Bhopal",
+    "NIT Calicut",
+    "NIT Delhi",
+    "NIT Durgapur",
+    "NIT Goa",
+    "NIT Hamirpur",
+    "NIT Jamshedpur",
+    "NIT Kurukshetra",
+    "NIT Manipur",
+    "NIT Meghalaya",
+    "NIT Mizoram",
+    "NIT Nagaland",
+    "NIT Patna",
+    "NIT Puducherry",
+    "NIT Raipur",
+    "NIT Rourkela",
+    "NIT Sikkim",
+    "NIT Silchar",
+    "NIT Srinagar",
+    "SVNIT Surat",
+    "NIT Tiruchirappalli",
+    "NIT Uttarakhand",
+    "NIT Warangal",
+    "NIT Jalandhar",
+    "MNIT Jaipur",
+    "MNNIT Allahabad",
+    "VNIT Nagpur",
+    "NIT Andhra Pradesh"
+];
 
   // Fetch filtered data whenever filters change
   useEffect(() => {
@@ -47,7 +75,6 @@ const Jossa = () => {
       [name]: value,
     }));
   };
-
   return (
     <div className="app">
       <Sidebar filters={filters} handleFilterChange={handleFilterChange} collegeOptions={collegeOptions} />
@@ -182,5 +209,4 @@ const Table = ({ data,setData }) => {
     </div>
   );
 };
-
 export default Jossa;
