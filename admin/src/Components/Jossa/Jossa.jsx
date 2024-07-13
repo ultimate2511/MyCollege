@@ -12,10 +12,10 @@ const Jossa = () => {
     state: 'all',
     branch: 'all',
     gender: 'all',
-    collegeName: 'IIT Bombay', // Corrected: Use collegeName instead of college
+    collegeName: 'NIT Agartala', // Corrected: Use collegeName instead of college
   });
   const [filteredData, setFilteredData] = useState([]);
-
+  // console.log(filters);
   // Array of college names
   const collegeOptions = [
     "NIT Agartala", "NIT Arunachal Pradesh", "NIT Andhra Pradesh", "MANIT Bhopal", "NIT Calicut", "NIT Delhi",

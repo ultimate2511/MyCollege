@@ -1,23 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import './BodySection.css';
 
 function BodySection() {
-    const [navigateTo, setNavigateTo] = useState(null);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        if (navigateTo) {
-            navigate(navigateTo);
-        }
-    }, [navigateTo, navigate]);
-
     const handleAddCollegeClick = () => {
-        setNavigateTo('/');
+        navigate('/');
     };
 
     const handleShowCollegesClick = () => {
-        setNavigateTo('/show-colleges');
+        navigate('/show-colleges');
     };
 
     return (

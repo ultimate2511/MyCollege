@@ -9,7 +9,7 @@ const Update = () => {
     const navigate = useNavigate();
 
     const obj = {};
-    const [formData, setFormData] = useState(obj);
+    const [formData, setFormData] = useState('');
   const collegeTypeOptions = ['NIT', 'IIIT', 'GFTI'];
   const colleges = [
     "NIT Agartala",
@@ -111,7 +111,7 @@ const Update = () => {
     };
 
     fetchFilteredData();
-  },[])
+  },[id])
   
 
   const handleChange = (e) => {
@@ -126,7 +126,7 @@ const Update = () => {
     e.preventDefault();
     try {
         
-        const res = await fetch(`http://localhost:4000/editClosingRank/${obj._id}`, {
+        const res = await fetch(`http://localhost:4000/editClosingRank/${formData._id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
