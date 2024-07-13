@@ -13,7 +13,7 @@ const JEEMainForm = () => {
     casteGroup: '',
     gender: '',
     speciallyAbled: '',
-    mobileNumber: ''
+   
   });
 
   const {mainsForm,setMainsForm} = useContext(FormContext);
@@ -75,6 +75,8 @@ const JEEMainForm = () => {
           </option>
         </select>
       </div>
+
+      
       <div>
         <label>Caste Group</label>
         <select name="casteGroup" value={formData.casteGroup} onChange={handleChange}

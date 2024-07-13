@@ -14,7 +14,7 @@ const ListPage = () => {
   const [response, setResponse] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  console.log(mainsForm);
+  // console.log(mainsForm);
   const fetchFilteredData = async () => {
     setLoading(true);
     setError(null);

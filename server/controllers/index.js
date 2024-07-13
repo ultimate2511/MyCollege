@@ -84,7 +84,7 @@ export const postData = async (req, res) => {
         // Send the filtered data as the response
         res.json(filteredData);
       } catch (error) {
-        console.error('Error fetching filtered data:', error);
+        // console.error('Error fetching filtered data:', error);
         res.status(500).json({ error: error.message });
       }
   };
@@ -98,7 +98,7 @@ export const postData = async (req, res) => {
       }
       res.json(closingRank);
     } catch (error) {
-      console.error('Error fetching filtered data:', error);
+      // console.error('Error fetching filtered data:', error);
         res.status(500).json({ error: error.message });
     }
   }
@@ -106,7 +106,7 @@ export const postData = async (req, res) => {
 
   export const predictCollege = async (req, res) => {
        
-    console.log(req.body);
+    // console.log(req.body);
       
     try {
       // Extract filters from the request body
@@ -114,7 +114,8 @@ export const postData = async (req, res) => {
          rank,
          homeState,
          casteGroup,
-         gender
+         gender,
+         
       } = req.body;
   
       // Build the query object based on provided filters
@@ -125,8 +126,9 @@ export const postData = async (req, res) => {
        
        // query.gender_name = gender;
         query.category_name = casteGroup;
+        
        // console.log(casteGroup);
-  
+        
       // Fetch filtered data from the database
       const filteredData = await ClosingRank.find(query);
      // console.log(filteredData);
@@ -145,6 +147,8 @@ export const postData = async (req, res) => {
             filter2.push(filteredData[i]);
             
           }
+
+
           //console.log("hello");
           
             

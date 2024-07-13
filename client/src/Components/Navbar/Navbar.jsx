@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import './Navbar.scss';
 import FormContext from '../../Context/FormContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import logo from './logo.webp'; // Assuming you have a logo image in the src directory
 import searchicon from './search.png';
 
@@ -11,37 +11,37 @@ const Navbar = () => {
   const [filteredColleges, setFilteredColleges] = useState([]);
   const navigate = useNavigate();
   const collegeOptions = [
-    "NIT Agartala",
-    "NIT Arunachal Pradesh",
-    "NIT Andhra Pradesh",
-    "MANIT Bhopal",
-    "NIT Calicut",
-    "NIT Delhi",
-    "NIT Durgapur",
-    "NIT Goa",
-    "NIT Hamirpur",
-    "NIT Jamshedpur",
-    "NIT Kurukshetra",
-    "NIT Manipur",
-    "NIT Meghalaya",
-    "NIT Mizoram",
-    "NIT Nagaland",
-    "NIT Patna",
-    "NIT Puducherry",
-    "NIT Raipur",
-    "NIT Rourkela",
-    "NIT Sikkim",
-    "NIT Silchar",
-    "NIT Srinagar",
-    "SVNIT Surat",
-    "NIT Tiruchirappalli",
-    "NIT Uttarakhand",
-    "NIT Warangal",
-    "NIT Jalandhar",
-    "MNIT Jaipur",
-    "MNNIT Allahabad",
-    "VNIT Nagpur",
-    "NIT Andhra Pradesh"
+    'NIT Agartala',
+    'NIT Arunachal Pradesh',
+    'NIT Andhra Pradesh',
+    'MANIT Bhopal',
+    'NIT Calicut',
+    'NIT Delhi',
+    'NIT Durgapur',
+    'NIT Goa',
+    'NIT Hamirpur',
+    'NIT Jamshedpur',
+    'NIT Kurukshetra',
+    'NIT Manipur',
+    'NIT Meghalaya',
+    'NIT Mizoram',
+    'NIT Nagaland',
+    'NIT Patna',
+    'NIT Puducherry',
+    'NIT Raipur',
+    'NIT Rourkela',
+    'NIT Sikkim',
+    'NIT Silchar',
+    'NIT Srinagar',
+    'SVNIT Surat',
+    'NIT Tiruchirappalli',
+    'NIT Uttarakhand',
+    'NIT Warangal',
+    'NIT Jalandhar',
+    'MNIT Jaipur',
+    'MNNIT Allahabad',
+    'VNIT Nagpur',
+    'NIT Andhra Pradesh',
   ];
 
   const handleSearchChange = (event) => {
@@ -49,7 +49,7 @@ const Navbar = () => {
     setSearchQuery(query);
 
     if (query) {
-      const filtered = collegeOptions.filter(college =>
+      const filtered = collegeOptions.filter((college) =>
         college.toLowerCase().includes(query.toLowerCase())
       );
       setFilteredColleges(filtered);
@@ -69,10 +69,10 @@ const Navbar = () => {
     const newForm = {
       ...mainsForm,
       college_name: query,
-      collegeName: query
+      collegeName: query,
     };
     setMainsForm(newForm);
-    console.log(newForm);
+    // console.log(newForm);
     navigate('/jeemains/jossa');
     setSearchQuery(''); // Clear the search box
     setFilteredColleges([]); // Clear the suggestions
@@ -85,10 +85,12 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <div className="navbar-logo">
-        <img src={logo} alt="Logo" />
-        <span className="navbar-name">MyCollege</span>
-      </div>
+      <Link to="/" style={{ textDecoration: 'none' }}>
+        <div className="navbar-logo">
+          <img src={logo} alt="Logo" />
+          <span className="navbar-name" style={{ color: 'white' }}>MyCollege</span>
+        </div>
+      </Link>
       <div className="navbar-search">
         <img src={searchicon} alt="Search Icon" />
         <input
