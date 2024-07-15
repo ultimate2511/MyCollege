@@ -19,7 +19,7 @@ const ListPage = () => {
     setLoading(true);
     setError(null);
     try {
-      const recv = await axios.post('http://localhost:4000/predictColleges', mainsForm);
+      const recv = await axios.post('https://mycollege-backend.onrender.com/predictColleges', mainsForm);
       const res = recv.data;
       const filteredByType = sortType ? res.filter(e => sortType === e.college_type) : res;
       const final = filteredByType.filter(e => (sortBranch ? e.college_branch.includes(sortBranch) : true));

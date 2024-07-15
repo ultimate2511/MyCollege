@@ -12,7 +12,7 @@ const Navbar = () => {
 
   const handleSignout = async () => {
     try {
-      const res = await fetch('http://localhost:4000/signout', {
+      const res = await fetch('https://mycollege-backend.onrender.com/signout', {
         method: 'POST',
       });
       const data = await res.json();

@@ -53,7 +53,7 @@ const Jossa = () => {
   useEffect(() => {
     const fetchFilteredData = async () => {
       try {
-        const response = await axios.post('http://localhost:4000/filterdata', filters);
+        const response = await axios.post('https://mycollege-backend.onrender.com/filterdata', filters);
         console.log('Filtered Data:', response.data);
         setFilteredData(response.data); // Update state with filtered data
       } catch (error) {
@@ -149,7 +149,7 @@ const Table = ({ data, setData }) => {
     console.log('Item to delete:', item._id);
     // Perform delete action here
     try {
-      const res = await fetch(`http://localhost:4000/deleteClosingRank/${item._id}`, {
+      const res = await fetch(`https://mycollege-backend.onrender.com/${item._id}`, {
         method: 'DELETE',
       });
       const data = await res.json();
