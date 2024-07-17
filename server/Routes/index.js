@@ -1,8 +1,8 @@
 import express from 'express';
 const router = express.Router();
-import {detailUsingId, postData} from '../Controllers/index.js';
-import { signup ,signin,signout } from '../Controllers/auth.js';
-import { filterData ,predictCollege} from '../Controllers/index.js';
+import {detailUsingId, postData} from '../controllers/index.js';
+import { signup ,signin,signout } from '../controllers/auth.js';
+import { filterData ,predictCollege} from '../controllers/index.js';
 
 import {
     deleteClosingRank,

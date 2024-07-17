@@ -102,7 +102,7 @@ const Update = () => {
   useEffect(()=>{
     const fetchFilteredData = async () => {
       try {
-        const response = await axios.post(`http://localhost:4000/detailUsingId/${id}`);
+        const response = await axios.post(`https://mycollege-backend.onrender.com/detailUsingId/${id}`);
         console.log(response.data);
         setFormData(response.data); // Update state with filtered data
       } catch (error) {

@@ -123,7 +123,7 @@ const AddCollege = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:4000/postdata', formData); // Replace with your backend endpoint
+      const response = await axios.post('https://mycollege-backend.onrender.com/postdata', formData); // Replace with your backend endpoint
       alert('Form Data Submitted Successfully');
       console.log('Form Data Submitted:', response.data);
       

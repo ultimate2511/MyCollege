@@ -1,7 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import connectDB from './config/mongoose.js';
-import indexRouter from './routes/index.js'; 
+import indexRouter from './Routes/index.js'; 
 import bodyParser from 'body-parser';
 import cors from 'cors';
 const app=express();
