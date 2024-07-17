@@ -1,20 +1,63 @@
-import React, { useState, useEffect } from 'react';
+import React, {useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import MyImage from './DeleteRed.webp';
 import axios from 'axios';
 import './Jossa.css';
-
+import SearchContext from '../../Context/SearchContext.js';
 const Jossa = () => {
+  const {search,setSearch} = useContext(SearchContext);
+  
+  const navigate = useNavigate();
+  
   const [filters, setFilters] = useState({
     category: 'all',
     state: 'all',
     branch: 'all',
     gender: 'all',
-    collegeName: 'NIT Agartala', // Corrected: Use collegeName instead of college
+    collegeName:  search || 'NIT Silchar', // Set default value
   });
+
   const [filteredData, setFilteredData] = useState([]);
-  // console.log(filters);
-  // Array of college names
+
+  useEffect(()=>{
+
+    const newFilter = {...filters,collegeName:search};
+    setFilters(newFilter);
+  },[search])
+
+  // Fetch filtered data whenever filters change
+  useEffect(() => {
+    
+    const fetchFilteredData = async () => {
+      try {
+        const response = await axios.post('http://localhost:4000/filterdata', filters);
+        console.log('Filtered Data:', response.data);
+        setFilteredData(response.data); // Update state with filtered data
+      } catch (error) {
+        console.error('Error fetching filtered data:', error);
+      }
+    };
+
+    fetchFilteredData();
+  }, [filters]);
+
+  const handleFilterChange = (event) => {
+    const { name, value } = event.target;
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      [name]: value,
+    }));
+  };
+
+  return (
+    <div className="app">
+      <Sidebar filters={filters} handleFilterChange={handleFilterChange} />
+      <Table data={filteredData} setData={setFilteredData} />
+    </div>
+  );
+};
+
+const Sidebar = ({ filters, handleFilterChange }) => {
   const collegeOptions = [
     'NIT Agartala',
     'NIT Arunachal Pradesh',
@@ -49,43 +92,11 @@ const Jossa = () => {
     'NIT Andhra Pradesh',
   ];
 
-  // Fetch filtered data whenever filters change
-  useEffect(() => {
-    const fetchFilteredData = async () => {
-      try {
-        const response = await axios.post('http://localhost:4000/filterdata', filters);
-        console.log('Filtered Data:', response.data);
-        setFilteredData(response.data); // Update state with filtered data
-      } catch (error) {
-        console.error('Error fetching filtered data:', error);
-      }
-    };
-
-    fetchFilteredData();
-  }, [filters]); // Run effect whenever filters change
-
-  const handleFilterChange = (event) => {
-    const { name, value } = event.target;
-    setFilters((prevFilters) => ({
-      ...prevFilters,
-      [name]: value,
-    }));
-  };
-
-  return (
-    <div className="app">
-      <Sidebar filters={filters} handleFilterChange={handleFilterChange} collegeOptions={collegeOptions} />
-      <Table data={filteredData} setData={setFilteredData} />
-    </div>
-  );
-};
-
-const Sidebar = ({ filters, handleFilterChange, collegeOptions }) => {
   return (
     <div className="sidebar">
       <h3>Filters</h3>
       <div className="filter-group">
-        <label htmlFor="collegeName">Select College:</label> {/* Corrected: Use collegeName */}
+        <label htmlFor="collegeName">Select College:</label>
         <select id="collegeName" name="collegeName" value={filters.collegeName} onChange={handleFilterChange}>
           {collegeOptions.map((college, index) => (
             <option key={index} value={college}>

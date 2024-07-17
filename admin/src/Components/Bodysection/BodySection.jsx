@@ -4,13 +4,13 @@ import './BodySection.css';
 
 function BodySection() {
     const navigate = useNavigate();
-
+    
     const handleAddCollegeClick = () => {
         navigate('/');
     };
 
     const handleShowCollegesClick = () => {
-        navigate('/show-colleges');
+        navigate(`/show-colleges`);
     };
 
     return (
